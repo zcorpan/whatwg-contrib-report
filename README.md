@@ -1,32 +1,32 @@
 # WHATWG contribution attribution report
 
-This repository skeleton generates a static HTML report showing, for each WHATWG Living Standard, which GitHub users and participant entities have contributed commits on `main`, and what percentage of all commits on `main` those represent.
+This repository skeleton generates a static HTML report showing, for each WHATWG Living Standard, which GitHub users and public participant entities have contributed commits, and what percentage of all commits on `main` those represent.
+
+The report is designed to run weekly from GitHub Actions and publish to GitHub Pages.
 
 ## What it measures
 
-For each standard listed in `whatwg/sg`'s `db.json`, the script infers the `whatwg/<repo>` repository from the standard's `href` URL, walks commits reachable from `main`, and asks GitHub which merged pull request introduced each commit when applicable. For example, `https://fs.spec.whatwg.org/` maps to `https://github.com/whatwg/fs`.
+For each standard listed in `whatwg/sg`'s `db.json`, the script infers the corresponding `whatwg/<repo>` repository from the standard URL. For example, `https://fs.spec.whatwg.org/` maps to `whatwg/fs`, and `https://html.spec.whatwg.org/multipage/` maps to `whatwg/html`.
 
-By default and without an opt-out flag:
+For each repository, the script walks commits reachable from `main` and asks GitHub which merged pull request, if any, introduced each commit.
+
+By default:
 
 - the denominator is **all commits reachable from `main`**;
 - commits associated with a merged PR are credited to the **PR author**, not the merger or committer;
-- direct/no-PR commits are credited to the **GitHub commit author** where GitHub resolves one;
+- direct/no-PR commits are credited to the resolved GitHub commit author;
 - commits without a resolvable GitHub login stay in the denominator but are not credited;
-- entity affiliation uses only **public** GitHub organization memberships for the `gitHubOrganization` values in `entities.json`;
-- private/concealed GitHub organization memberships are ignored even if the token has permission to see them;
-- participant-data records explicitly marked non-`Public` are skipped/suppressed, and there is no option to include them;
-- participant-data entity contacts are not used as an affiliation shortcut;
-- if a contributor maps to multiple entities for a spec, entity credit is split fractionally to avoid totals above 100%.
+- entity affiliation uses public GitHub organization memberships and public participant-data contacts;
+- participant-data entries explicitly marked non-`Public` are ignored, with no option to include them;
+- if a contributor maps to multiple public entities for a spec, entity credit is split fractionally to avoid totals above 100%.
 
 ## Important caveats
 
 Entity attribution uses the latest public GitHub organization data at generation time. Historical employer changes are not reconstructed, so past contributions are credited to the contributor's current public entity affiliation.
 
-The default affiliation source is `--affiliation-source user-orgs`, which fetches the public organizations listed on each contributor's GitHub profile. To crawl every entity `gitHubOrganization` public member list instead, run with `--affiliation-source org-public-members` or `--affiliation-source both`; all modes use only public membership visibility. There is no mode that uses private organization membership visibility or explicitly non-public participant records.
+Private or concealed GitHub organization memberships are intentionally ignored, even if the token used by the workflow could see them. The script uses public membership surfaces only.
 
-## Why not scrape `/graphs/contributors?all=1`?
-
-The script deliberately does not use GitHub's web contributor graph. The graph is useful as a visual cross-check, but it is not a stable machine API, only shows the top contributors in the UI, excludes merge and empty commits, depends on GitHub's default-branch contributor-graph rules, and does not expose the PR-author vs direct-commit distinction needed for this report. The GraphQL commit history query gives commit-level data, preserves the all-commits denominator, and exposes `associatedPullRequests` for PR attribution.
+GitHub can associate a commit with a GitHub account only when GitHub can resolve the commit author to a user. Older commits or commits using unlinked email addresses can therefore remain uncredited.
 
 ## Local run
 
@@ -44,7 +44,9 @@ Then open <http://localhost:8000/>.
 2. In repository settings, configure GitHub Pages to use **GitHub Actions** as the source.
 3. Run the workflow manually once. Later runs happen weekly.
 
-The workflow also pushes the generated `index.html`, `report.json`, and cache file to the `gh-pages` branch. The actual Pages deployment uses GitHub's official Pages artifact flow so it does not depend on a branch-push Pages build trigger.
+The workflow uses the built-in `GITHUB_TOKEN`. A separate personal token should not be necessary unless a full scan hits rate limits.
+
+The workflow also pushes the generated `index.html`, `report.json`, and cache file to the `gh-pages` branch. The actual Pages deployment uses GitHub's official Pages artifact flow, so it does not depend on a branch-push Pages build trigger.
 
 ## Outputs
 
@@ -57,16 +59,20 @@ The workflow also pushes the generated `index.html`, `report.json`, and cache fi
 ```text
 --full-scan                    scan full history instead of stopping at cached commits
 --incremental                  stop when a cached history page is reached
---include-unverified           include unverified participant-data entries that are still publicly visible
---affiliation-source SOURCE    user-orgs, org-public-members, or both
+--sg-db-url URL                use a different whatwg/sg db.json URL
+--include-unverified           include unverified public participant-data entries
+--affiliation-source SOURCE    user-orgs, org-members, or both; all use public memberships only
 --entity-attribution MODE      fractional or duplicate
---sg-db-url URL                WHATWG SG db.json URL
 ```
+
+There is intentionally no option to include non-public participant-data entries or private GitHub organization memberships.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Attribution
 
 This project was initially created with assistance from ChatGPT (OpenAI) based on requirements provided by the project author. The generated code and documentation have been reviewed and may have been modified after generation.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+Users should independently verify the correctness of the implementation and results before relying on them.
