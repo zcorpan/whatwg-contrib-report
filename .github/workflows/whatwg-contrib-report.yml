@@ -1,74 +1,119 @@
 name: WHATWG contribution report
 
 on:
+  schedule:
+    # Weekly, Monday 04:17 UTC.
+    - cron: "17 4 * * 1"
   workflow_dispatch:
     inputs:
       full_scan:
-        description: "Ignore cache and rescan all history"
+        description: "Ignore the gh-pages cache and scan full repository history"
         required: false
-        default: false
         type: boolean
-  schedule:
-    - cron: "0 4 * * 1"
+        default: false
 
 permissions:
   contents: write
   pages: write
   id-token: write
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  actions: read
 
 concurrency:
-  group: whatwg-contrib-report-pages
+  group: whatwg-contribution-report
   cancel-in-progress: false
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      FULL_SCAN: ${{ github.event_name == 'workflow_dispatch' && inputs.full_scan == true }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Check out source
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v6
-
-      - name: Install dependencies
+      - name: Restore report cache from gh-pages
+        shell: bash
         run: |
-          python -m pip install --upgrade pip
-          pip install requests
+          set -euo pipefail
+          mkdir -p .report-cache
+          git fetch origin gh-pages --depth=1 || true
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git show origin/gh-pages:cache/whatwg-contrib-cache.json > .report-cache/whatwg-contrib-cache.json || true
+          fi
 
-      - name: Generate report
+      - name: Build report
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          python scripts/whatwg_contrib_report.py \
-            ${{ inputs.full_scan && '--full-scan' || '' }}
+          set -euo pipefail
+          mkdir -p public/cache
+          args=(
+            --output public
+            --cache-file .report-cache/whatwg-contrib-cache.json
+            --write-cache public/cache/whatwg-contrib-cache.json
+          )
+          if [[ "${FULL_SCAN}" == "true" ]]; then
+            args+=(--full-scan)
+          else
+            args+=(--incremental)
+          fi
+          python scripts/whatwg_contrib_report.py "${args[@]}"
+
+      - name: Push generated files to gh-pages branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          rm -rf /tmp/whatwg-contrib-gh-pages
+          git fetch origin gh-pages --depth=1 || true
+
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git worktree add /tmp/whatwg-contrib-gh-pages origin/gh-pages
+          else
+            git worktree add --detach /tmp/whatwg-contrib-gh-pages
+            (
+              cd /tmp/whatwg-contrib-gh-pages
+              git checkout --orphan gh-pages
+              git rm -rf . >/dev/null 2>&1 || true
+            )
+          fi
+
+          rsync -a --delete --exclude .git public/ /tmp/whatwg-contrib-gh-pages/
+          touch /tmp/whatwg-contrib-gh-pages/.nojekyll
+
+          (
+            cd /tmp/whatwg-contrib-gh-pages
+            git add -A
+            if git diff --cached --quiet; then
+              echo "No gh-pages changes to commit."
+            else
+              git commit -m "Update WHATWG contribution report"
+              git push origin HEAD:gh-pages
+            fi
+          )
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
-          path: site
+          path: public
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-
-      - name: Publish gh-pages branch
-        run: |
-          git fetch origin gh-pages || true
-          git switch --orphan gh-pages-tmp
-          cp -R site/. .
-          touch .nojekyll
-          git add .
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Update report" || exit 0
-          git branch -M gh-pages
-          git push -f origin gh-pages
