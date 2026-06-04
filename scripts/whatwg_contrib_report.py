@@ -1,23 +1,19 @@
 #!/usr/bin/env python3
 """Generate a WHATWG contribution attribution report.
 
-The report is intentionally conservative:
+The report:
 
-* It discovers WHATWG standards from whatwg/sg db.json.
-* It infers each standard's GitHub repository from the standard URL's
-  .spec.whatwg.org hostname, e.g. https://fs.spec.whatwg.org/ -> whatwg/fs.
-* It walks commits reachable from the requested branch (main by default).
-* It credits commits associated with merged PRs to the PR author.
-* It credits direct/no-PR commits to the GitHub commit author where GitHub
-  resolves one. Commits without a resolvable GitHub login remain in the
-  denominator but are not credited.
-* It never reports participant-data entries explicitly marked non-Public; there
-  is no flag or endpoint path to include them.
-* Entity affiliation is based only on public GitHub organization memberships for
-  participant-data entity GitHub organizations, plus public participant-data
-  contacts unless disabled. Private/concealed memberships are intentionally
-  ignored, even if the token could see them.
-* Historical affiliation changes are not reconstructed.
+* discovers WHATWG standards from the WHATWG Steering Group db.json file;
+* infers each repository from the standard URL, e.g. https://fs.spec.whatwg.org/
+  maps to https://github.com/whatwg/fs;
+* walks commits reachable from the requested branch, main by default;
+* credits commits associated by GitHub with a merged PR to the PR author;
+* credits direct/no-PR commits to the resolved GitHub commit author;
+* uses all commits on the branch as the denominator;
+* attributes entities using participant-data contacts and public GitHub
+  organization memberships only.
+
+Historical affiliation changes are not reconstructed.
 
 Requires Python 3.11+ and a GitHub token in GITHUB_TOKEN for GraphQL.
 No third-party Python packages are required.
@@ -40,7 +36,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from typing import Any, DefaultDict, Iterable, Iterator, Mapping, MutableMapping, Optional
+from typing import Any, DefaultDict, Iterator, Mapping, MutableMapping, Optional
 
 
 DEFAULT_SG_DB_URL = "https://raw.githubusercontent.com/whatwg/sg/main/db.json"
@@ -111,7 +107,7 @@ class Spec:
     workstream_id: str
     name: str
     spec_url: str
-    repo_owner: str = ""
+    repo_owner: str = "whatwg"
     repo_name: str = ""
 
     @property
@@ -129,7 +125,7 @@ class ParticipantWorkstreams:
     ids: frozenset[str]
 
     def applies_to(self, workstream_id: str) -> bool:
-        return self.all_workstreams or workstream_id in self.ids
+        return self.all_workstreams or normalize_workstream_id(workstream_id) in self.ids
 
 
 @dataclasses.dataclass(frozen=True)
@@ -307,8 +303,8 @@ def normalize_spec_url(url: str) -> str:
     return urllib.parse.urlunparse((parsed.scheme or "https", parsed.netloc, path, "", "", ""))
 
 
-def normalize_login(login: Optional[str]) -> str:
-    if not login:
+def normalize_login(login: Any) -> str:
+    if not isinstance(login, str):
         return ""
     return login.strip().lstrip("@").lower()
 
@@ -331,249 +327,232 @@ def normalize_github_org(value: Any) -> str:
     return ""
 
 
+def normalize_workstream_id(value: Any) -> str:
+    if value is None:
+        return ""
+    return re.sub(r"[^a-z0-9_-]+", "", str(value).strip().lower())
+
+
+def slug(value: Any) -> str:
+    text = clean_ws(str(value or "")).lower()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return text.strip("-")
+
+
 def participant_workstreams(raw: Any) -> ParticipantWorkstreams:
     if raw == "all":
         return ParticipantWorkstreams(True, frozenset())
     if isinstance(raw, list):
-        return ParticipantWorkstreams(False, frozenset(str(item) for item in raw))
+        return ParticipantWorkstreams(False, frozenset(normalize_workstream_id(item) for item in raw))
     return ParticipantWorkstreams(False, frozenset())
 
 
-def participant_visibility(item: Mapping[str, Any]) -> str:
-    """Return declared participant visibility, if present.
-
-    Current public participant-data JSON files do not expose a visibility field.
-    Missing visibility is treated as public for compatibility with those files,
-    but explicit non-public visibility is never reportable and there is no
-    override to include it.
-    """
-    info = item.get("info")
-    signature = item.get("signature")
-    for container in (item, info if isinstance(info, Mapping) else None, signature if isinstance(signature, Mapping) else None):
-        if not isinstance(container, Mapping):
-            continue
-        for key in ("visibility", "participantVisibility", "profileVisibility"):
-            value = container.get(key)
-            if isinstance(value, str) and value.strip():
-                return value.strip()
-        for key in ("public", "isPublic"):
-            if key in container:
-                return "Public" if bool(container.get(key)) else "Private"
-    return ""
-
-
-def is_public_participant(item: Mapping[str, Any]) -> bool:
-    visibility = participant_visibility(item)
-    return not visibility or visibility.casefold() == "public"
-
-
-def entity_contact_logins(item: Mapping[str, Any]) -> set[str]:
-    info = item.get("info")
-    if not isinstance(info, Mapping):
-        return set()
-    logins: set[str] = set()
-    for value in info.values():
-        if isinstance(value, Mapping):
-            login = normalize_login(value.get("gitHubID"))
-            if login:
-                logins.add(login)
-    return logins
-
-
-def now_iso() -> str:
-    return _dt.datetime.now(_dt.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-
-
-def fetch_bytes_with_metadata(url: str, timeout: int = 90) -> tuple[bytes, dict[str, Any]]:
+def fetch_bytes(url: str, timeout: int = 90) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "whatwg-contrib-report/1.0"})
-    fetched_at = now_iso()
     with urllib.request.urlopen(req, timeout=timeout) as response:
-        raw = response.read()
-        headers = response.headers
+        return response.read()
+
+
+def fetch_json_with_meta(url: str, client: Optional[GitHubClient] = None) -> tuple[Any, dict[str, Any]]:
+    content = fetch_bytes(url)
     meta = {
         "url": url,
-        "fetchedAt": fetched_at,
-        "bytes": len(raw),
-        "sha256": hashlib.sha256(raw).hexdigest(),
+        "fetchedAt": now_iso(),
+        "sha256": hashlib.sha256(content).hexdigest(),
+        "byteLength": len(content),
     }
-    etag = headers.get("ETag") or headers.get("etag")
-    last_modified = headers.get("Last-Modified") or headers.get("last-modified")
-    if etag:
-        meta["etag"] = etag
-    if last_modified:
-        meta["lastModified"] = last_modified
-    return raw, meta
+    pinned = pinned_raw_github_url(url, client)
+    if pinned:
+        meta["pinnedUrl"] = pinned
+    return json.loads(content.decode("utf-8")), meta
 
 
-def json_fetch_with_metadata(url: str, timeout: int = 90) -> tuple[Any, dict[str, Any]]:
-    raw, meta = fetch_bytes_with_metadata(url, timeout=timeout)
-    return json.loads(raw.decode("utf-8")), meta
-
-
-def resolve_raw_github_source(client: GitHubClient, url: str, warnings: list[RunWarning]) -> tuple[str, dict[str, Any]]:
-    """Resolve a raw.githubusercontent.com branch URL to a commit-pinned URL.
-
-    The returned metadata is merged into the fetch metadata so the report can
-    show both the configured input URL and the immutable source URL used for
-    this run. Non-GitHub-raw URLs are returned unchanged.
-    """
-    meta: dict[str, Any] = {"configuredUrl": url, "resolvedUrl": url}
+def pinned_raw_github_url(url: str, client: Optional[GitHubClient]) -> str:
+    if client is None:
+        return ""
     parsed = urllib.parse.urlparse(url)
     if parsed.netloc != "raw.githubusercontent.com":
-        return url, meta
-
-    parts = parsed.path.strip("/").split("/", 3)
-    if len(parts) != 4:
-        warnings.append(RunWarning("provenance", f"Could not parse raw GitHub URL {url}; using it as-is."))
-        return url, meta
-
-    owner, repo, ref, path = parts
-    meta.update({"githubRepository": f"{owner}/{repo}", "githubRef": ref, "githubPath": path})
+        return ""
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 4:
+        return ""
+    owner, repo, ref = parts[0], parts[1], parts[2]
+    rest_path = "/".join(parts[3:])
+    if re.fullmatch(r"[0-9a-fA-F]{40}", ref):
+        return url
+    if "/" in ref:
+        return ""
     try:
-        quoted_ref = urllib.parse.quote(ref, safe="")
-        commit, _headers, status = client.rest_get_json(f"/repos/{owner}/{repo}/commits/{quoted_ref}", allow_404=True)
-        if status == 404 or not isinstance(commit, Mapping) or not commit.get("sha"):
-            warnings.append(RunWarning("provenance", f"Could not resolve {owner}/{repo}@{ref}; using configured URL."))
-            return url, meta
-        sha = str(commit.get("sha"))
-        resolved_url = f"https://raw.githubusercontent.com/{owner}/{repo}/{sha}/{path}"
-        meta.update({"githubCommitSha": sha, "githubCommitUrl": commit.get("html_url") or "", "resolvedUrl": resolved_url})
-        return resolved_url, meta
-    except Exception as exc:
-        warnings.append(RunWarning("provenance", f"Could not resolve {owner}/{repo}@{ref}: {exc}; using configured URL."))
-        return url, meta
+        data, _headers, status = client.rest_get_json(
+            f"/repos/{urllib.parse.quote(owner)}/{urllib.parse.quote(repo)}/commits/{urllib.parse.quote(ref)}",
+            allow_404=True,
+        )
+    except Exception:
+        return ""
+    if status != 200 or not isinstance(data, dict):
+        return ""
+    sha = data.get("sha")
+    if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-fA-F]{40}", sha):
+        return ""
+    return f"https://raw.githubusercontent.com/{owner}/{repo}/{sha}/{rest_path}"
 
 
-def load_specs(sg_db_url: str, warnings: list[RunWarning]) -> tuple[list[Spec], dict[str, Any]]:
-    data, meta = json_fetch_with_metadata(sg_db_url)
-    workstreams = data.get("workstreams") if isinstance(data, dict) else None
+def load_specs(sg_db_url: str, client: GitHubClient, warnings: list[RunWarning]) -> tuple[list[Spec], dict[str, Any]]:
+    data, meta = fetch_json_with_meta(sg_db_url, client)
+    if isinstance(data, dict):
+        workstreams = data.get("workstreams") or []
+    elif isinstance(data, list):
+        workstreams = data
+    else:
+        raise ReportError(f"Expected object or array from {sg_db_url}, got {type(data).__name__}")
     if not isinstance(workstreams, list):
-        raise ReportError(f"Expected {sg_db_url} to contain a top-level workstreams array")
+        raise ReportError(f"Expected workstreams to be a list in {sg_db_url}")
 
     specs: list[Spec] = []
     seen_spec_urls: set[str] = set()
-    for workstream in workstreams:
-        if not isinstance(workstream, dict):
+    for ws in workstreams:
+        if not isinstance(ws, dict):
             continue
-        workstream_id = clean_ws(str(workstream.get("id") or ""))
-        workstream_title = clean_ws(str(workstream.get("name") or workstream_id))
-        standards = workstream.get("standards") or []
-        if not workstream_id or not isinstance(standards, list):
+        workstream_title = clean_ws(str(ws.get("title") or ws.get("name") or ws.get("id") or ""))
+        workstream_id = normalize_workstream_id(ws.get("id") or ws.get("shortname") or ws.get("key") or workstream_title)
+        standards = ws.get("standards") or []
+        if isinstance(standards, dict):
+            standards_iter = list(standards.values())
+        elif isinstance(standards, list):
+            standards_iter = standards
+        else:
+            warnings.append(RunWarning("sg-db", f"Skipping standards for workstream {workstream_title or workstream_id}: expected list or object."))
             continue
-        for standard in standards:
-            if not isinstance(standard, dict):
+
+        for standard in standards_iter:
+            if isinstance(standard, str):
+                href = standard
+                name = infer_standard_name_from_url(standard)
+            elif isinstance(standard, dict):
+                href = standard.get("href") or standard.get("url") or standard.get("spec") or ""
+                name = clean_ws(str(standard.get("name") or standard.get("title") or ""))
+            else:
                 continue
-            href = standard.get("href")
             if not isinstance(href, str) or not href.strip():
-                warnings.append(RunWarning("sg-db", f"Skipping standard without href in workstream {workstream_id}."))
+                warnings.append(RunWarning("sg-db", f"Skipping standard without href in {workstream_title or workstream_id}."))
                 continue
-            spec_url = normalize_spec_url(href)
+            spec_url = normalize_spec_url(urllib.parse.urljoin("https://whatwg.org/", href.strip()))
+            if not name:
+                name = infer_standard_name_from_url(spec_url)
+            repo = infer_repo_name_from_spec_url(spec_url)
+            if not repo:
+                repo = slug(name)
+                warnings.append(RunWarning(name or spec_url, f"Could not infer whatwg repository from {spec_url}; using {repo!r}."))
             if spec_url in seen_spec_urls:
                 continue
             seen_spec_urls.add(spec_url)
-            name = clean_ws(str(standard.get("name") or standard.get("reference") or href))
             specs.append(
                 Spec(
-                    workstream_title=workstream_title,
+                    workstream_title=workstream_title or workstream_id,
                     workstream_id=workstream_id,
-                    name=name,
+                    name=name or repo,
                     spec_url=spec_url,
+                    repo_owner="whatwg",
+                    repo_name=repo,
                 )
             )
+
     if not specs:
         raise ReportError(f"No standards found in {sg_db_url}")
     return specs, meta
 
 
-def infer_repo_from_spec_url(spec: Spec, warnings: list[RunWarning]) -> Spec:
-    parsed = urllib.parse.urlparse(spec.spec_url)
+def infer_repo_name_from_spec_url(spec_url: str) -> str:
+    parsed = urllib.parse.urlparse(spec_url)
     host = parsed.netloc.lower()
-    path_parts = [part for part in parsed.path.split("/") if part]
-    owner = "whatwg"
-    repo = ""
-    if host.endswith(".spec.whatwg.org"):
-        repo = host[: -len(".spec.whatwg.org")]
-    elif host == "whatwg.github.io" and path_parts:
-        repo = path_parts[0]
-    elif host.endswith(".idea.whatwg.org"):
-        repo = host[: -len(".idea.whatwg.org")]
-    elif host.endswith(".whatwg.org"):
-        repo = host.split(".", 1)[0]
+    suffix = ".spec.whatwg.org"
+    if not host.endswith(suffix):
+        return ""
+    name = host[: -len(suffix)]
+    if "." in name:
+        name = name.split(".")[-1]
+    return re.sub(r"[^a-z0-9_.-]+", "", name)
+
+
+def infer_standard_name_from_url(url: str) -> str:
+    repo = infer_repo_name_from_spec_url(url)
     if repo:
-        repo = repo.removesuffix(".git")
-        return dataclasses.replace(spec, repo_owner=owner, repo_name=repo)
-    warnings.append(RunWarning(spec.name, f"Could not infer repository from {spec.spec_url}; skipping this standard."))
-    return spec
+        return repo.replace("-", " ").replace("_", " ").title()
+    parsed = urllib.parse.urlparse(url)
+    base = parsed.netloc or parsed.path.rstrip("/").rsplit("/", 1)[-1]
+    return clean_ws(base.replace(".", " ").replace("-", " ").title())
 
 
-def load_entities(
-    url: str,
-    include_unverified: bool,
-    warnings: list[RunWarning],
-) -> tuple[list[Entity], set[str], dict[str, Any]]:
-    data, meta = json_fetch_with_metadata(url)
+def load_entities(data: Any, include_unverified: bool, warnings: list[RunWarning]) -> list[Entity]:
     if not isinstance(data, list):
-        raise ReportError(f"Expected {url} to contain an array")
+        raise ReportError(f"Expected entities JSON to be a list, got {type(data).__name__}")
     entities: list[Entity] = []
-    non_public_logins: set[str] = set()
     seen_ids: set[str] = set()
     for item in data:
-        if not isinstance(item, Mapping):
-            continue
-        if not is_public_participant(item):
-            non_public_logins.update(entity_contact_logins(item))
+        if not isinstance(item, dict):
             continue
         verified = bool(item.get("verified"))
         if not include_unverified and not verified:
             continue
         info = item.get("info") or {}
-        if not isinstance(info, Mapping):
+        if not isinstance(info, dict):
             continue
         org = normalize_github_org(info.get("gitHubOrganization"))
         if not org:
             warnings.append(RunWarning("participant-data", f"Skipping entity {info.get('name') or item.get('id')} because gitHubOrganization is missing or invalid."))
             continue
         name = clean_ws(str(info.get("name") or org))
-        contacts = entity_contact_logins(item)
-        entity = Entity(
-            entity_id=str(item.get("id") or org),
-            name=name,
-            org_login=org,
-            verified=verified,
-            workstreams=participant_workstreams(item.get("workstreams")),
-            contacts=frozenset(contacts),
-            url=str(info.get("url") or ""),
+        contacts = collect_contact_logins(info)
+        entity_id = str(item.get("id") or org)
+        if entity_id in seen_ids:
+            warnings.append(RunWarning("participant-data", f"Duplicate entity id {entity_id}; keeping duplicate as separate entity."))
+        seen_ids.add(entity_id)
+        entities.append(
+            Entity(
+                entity_id=entity_id,
+                name=name,
+                org_login=org,
+                verified=verified,
+                workstreams=participant_workstreams(item.get("workstreams")),
+                contacts=frozenset(contacts),
+                url=str(info.get("url") or ""),
+            )
         )
-        if entity.entity_id in seen_ids:
-            warnings.append(RunWarning("participant-data", f"Duplicate entity id {entity.entity_id}; keeping duplicate as separate entity."))
-        seen_ids.add(entity.entity_id)
-        entities.append(entity)
-    return entities, non_public_logins, meta
+    return entities
 
 
-def load_individuals(
-    url: str,
-    include_unverified: bool,
-) -> tuple[dict[str, Individual], set[str], dict[str, Any]]:
-    data, meta = json_fetch_with_metadata(url)
+def collect_contact_logins(info: Mapping[str, Any]) -> set[str]:
+    contacts: set[str] = set()
+    for key, value in info.items():
+        if key.startswith("contact") and isinstance(value, dict):
+            login = normalize_login(value.get("gitHubID"))
+            if login:
+                contacts.add(login)
+    raw_contacts = info.get("contacts")
+    if isinstance(raw_contacts, list):
+        for value in raw_contacts:
+            if isinstance(value, dict):
+                login = normalize_login(value.get("gitHubID"))
+                if login:
+                    contacts.add(login)
+    return contacts
+
+
+def load_individuals(data: Any, include_unverified: bool) -> dict[str, Individual]:
     if not isinstance(data, list):
-        raise ReportError(f"Expected {url} to contain an array")
+        raise ReportError(f"Expected individuals JSON to be a list, got {type(data).__name__}")
     individuals: dict[str, Individual] = {}
-    non_public_logins: set[str] = set()
     for item in data:
-        if not isinstance(item, Mapping):
-            continue
-        info = item.get("info") or {}
-        if not isinstance(info, Mapping):
-            continue
-        login = normalize_login(info.get("gitHubID"))
-        if not login:
-            continue
-        if not is_public_participant(item):
-            non_public_logins.add(login)
+        if not isinstance(item, dict):
             continue
         verified = bool(item.get("verified"))
         if not include_unverified and not verified:
+            continue
+        info = item.get("info") or {}
+        if not isinstance(info, dict):
+            continue
+        login = normalize_login(info.get("gitHubID"))
+        if not login:
             continue
         individuals[login] = Individual(
             participant_id=str(item.get("id") or login),
@@ -582,7 +561,7 @@ def load_individuals(
             verified=verified,
             workstreams=participant_workstreams(item.get("workstreams")),
         )
-    return individuals, non_public_logins, meta
+    return individuals
 
 
 def load_cache(path: str) -> dict[str, Any]:
@@ -590,9 +569,9 @@ def load_cache(path: str) -> dict[str, Any]:
         return {"version": CACHE_VERSION, "repositories": {}}
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    if not isinstance(data, dict) or data.get("version") != CACHE_VERSION:
+    if not isinstance(data, dict) or not isinstance(data.get("repositories"), dict):
         return {"version": CACHE_VERSION, "repositories": {}}
-    data.setdefault("repositories", {})
+    data["version"] = CACHE_VERSION
     return data
 
 
@@ -600,8 +579,10 @@ def write_cache(path: str, cache: Mapping[str, Any]) -> None:
     if not path:
         return
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    cache_to_write = dict(cache)
+    cache_to_write["version"] = CACHE_VERSION
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(cache, f, indent=2, sort_keys=True)
+        json.dump(cache_to_write, f, indent=2, sort_keys=True)
         f.write("\n")
 
 
@@ -687,10 +668,10 @@ def fetch_repo_commits(
             )
         )
         return fetch_repo_commits(
-            client=client,
-            spec=spec,
-            branch=branch,
-            cache=cache,
+            client,
+            spec,
+            branch,
+            cache,
             incremental=False,
             page_size=page_size,
             warnings=warnings,
@@ -745,6 +726,10 @@ def select_pr(prs: list[Mapping[str, Any]]) -> Optional[Mapping[str, Any]]:
     return sorted(prs, key=lambda pr: str(pr.get("mergedAt") or ""), reverse=True)[0]
 
 
+def now_iso() -> str:
+    return _dt.datetime.now(_dt.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
 def build_affiliations(
     client: GitHubClient,
     contributors: set[str],
@@ -753,7 +738,13 @@ def build_affiliations(
     include_contacts: bool,
     warnings: list[RunWarning],
 ) -> dict[str, set[str]]:
-    """Return contributor login -> public entity ids."""
+    """Return contributor login -> entity ids.
+
+    All GitHub org membership lookups here are public-only. The script never uses
+    /orgs/{org}/members, which can expose memberships to privileged tokens.
+    """
+    if source == "org-members":
+        source = "org-public-members"
     login_to_entity_ids: dict[str, set[str]] = {login: set() for login in contributors}
     org_to_entities: DefaultDict[str, list[Entity]] = collections.defaultdict(list)
     for entity in entities:
@@ -779,7 +770,7 @@ def build_affiliations(
             except Exception as exc:
                 warnings.append(RunWarning("affiliations", f"Could not fetch public orgs for {login}: {exc}"))
 
-    if source in {"org-members", "both"}:
+    if source in {"org-public-members", "both"}:
         for index, (org_login, org_entities) in enumerate(sorted(org_to_entities.items()), start=1):
             print(f"Fetching public members for org {org_login} ({index}/{len(org_to_entities)})", file=sys.stderr)
             try:
@@ -795,21 +786,6 @@ def build_affiliations(
     return login_to_entity_ids
 
 
-def collect_contributor_logins(
-    commits_by_repo: Mapping[str, list[dict[str, Any]]],
-    non_public_participant_logins: set[str],
-) -> set[str]:
-    contributors: set[str] = set()
-    for commits in commits_by_repo.values():
-        for commit in commits:
-            login = normalize_login(commit.get("prAuthorLogin"))
-            if not login:
-                login = normalize_login(commit.get("authorLogin"))
-            if login and login not in non_public_participant_logins:
-                contributors.add(login)
-    return contributors
-
-
 def compute_spec_report(
     spec: Spec,
     commits: list[dict[str, Any]],
@@ -818,7 +794,6 @@ def compute_spec_report(
     entities_by_id: Mapping[str, Entity],
     individuals_by_login: Mapping[str, Individual],
     login_to_entity_ids: Mapping[str, set[str]],
-    non_public_participant_logins: set[str],
     entity_attribution: str,
     ignore_participant_workstreams: bool,
 ) -> dict[str, Any]:
@@ -842,39 +817,36 @@ def compute_spec_report(
         return ignore_participant_workstreams or individual.workstreams.applies_to(spec.workstream_id)
 
     for commit in commits:
+        pr_number = commit.get("prNumber")
         pr_author = normalize_login(commit.get("prAuthorLogin"))
         author = normalize_login(commit.get("authorLogin"))
-        has_pr = bool(pr_author)
-        if has_pr:
+        if pr_number:
             pr_commits += 1
             credit_login = pr_author
-            credit_source = "merged-pr"
+            credit_source = "merged-pr" if pr_author else "uncredited-pr"
         else:
             direct_commits += 1
             credit_login = author
-            credit_source = "direct-commit" if credit_login else "uncredited-direct"
+            credit_source = "direct-commit" if author else "uncredited-direct"
 
         if not credit_login:
             uncredited_commits += 1
             if not author and not pr_author:
                 no_login_commits += 1
             continue
-        if credit_login in non_public_participant_logins:
-            uncredited_commits += 1
-            continue
-
         credited_commits += 1
-        individual_record = individuals_by_login.get(credit_login)
-        individual = individual_record if individual_record and individual_applies(individual_record) else None
-        individual_is_signed = bool(individual)
+
+        individual = individuals_by_login.get(credit_login)
+        individual_is_signed = bool(individual and individual_applies(individual))
         eligible_entity_ids = sorted(
             entity_id
             for entity_id in login_to_entity_ids.get(credit_login, set())
             if entity_id in entities_by_id and entity_applies(entities_by_id[entity_id])
         )
-        weight = 1.0
-        if eligible_entity_ids and entity_attribution == "fractional":
-            weight = 1.0 / len(eligible_entity_ids)
+        if entity_attribution == "fractional" and eligible_entity_ids:
+            entity_weight = 1.0 / len(eligible_entity_ids)
+        else:
+            entity_weight = 1.0
 
         row = individual_stats.setdefault(
             credit_login,
@@ -882,8 +854,7 @@ def compute_spec_report(
                 "login": credit_login,
                 "name": individual.name if individual else "",
                 "signedIndividual": individual_is_signed,
-                "entityAffiliations": collections.Counter(),
-                "entityAffiliationRawMatches": collections.Counter(),
+                "entityAffiliations": {},
                 "commitCount": 0,
                 "prCommitCount": 0,
                 "directCommitCount": 0,
@@ -891,9 +862,6 @@ def compute_spec_report(
                 "sources": collections.Counter(),
             },
         )
-        if individual and not row["name"]:
-            row["name"] = individual.name
-        row["signedIndividual"] = bool(row["signedIndividual"] or individual_is_signed)
         row["commitCount"] += 1
         if credit_source == "merged-pr":
             row["prCommitCount"] += 1
@@ -903,14 +871,16 @@ def compute_spec_report(
         if (commit.get("prAuthorType") or "").lower() in {"bot", "app"}:
             row["botOrApp"] = True
 
-        for entity_id in eligible_entity_ids:
-            entity = entities_by_id[entity_id]
-            row["entityAffiliations"][entity.name] += weight
-            row["entityAffiliationRawMatches"][entity.name] += 1
-
         if eligible_entity_ids:
             for entity_id in eligible_entity_ids:
                 entity = entities_by_id[entity_id]
+                affiliation = row["entityAffiliations"].setdefault(
+                    entity.name,
+                    {"commitCredit": 0.0, "rawCommitMatches": 0},
+                )
+                affiliation["commitCredit"] += entity_weight
+                affiliation["rawCommitMatches"] += 1
+
                 est = entity_stats.setdefault(
                     entity_id,
                     {
@@ -919,15 +889,18 @@ def compute_spec_report(
                         "gitHubOrganization": entity.org_login,
                         "url": entity.url,
                         "commitCredit": 0.0,
-                        "contributors": collections.Counter(),
-                        "contributorRawMatches": collections.Counter(),
+                        "contributors": {},
                         "rawCommitMatches": 0,
                     },
                 )
-                est["commitCredit"] += weight
+                est["commitCredit"] += entity_weight
                 est["rawCommitMatches"] += 1
-                est["contributors"][credit_login] += weight
-                est["contributorRawMatches"][credit_login] += 1
+                contributor = est["contributors"].setdefault(
+                    credit_login,
+                    {"commitCredit": 0.0, "rawCommitMatches": 0},
+                )
+                contributor["commitCredit"] += entity_weight
+                contributor["rawCommitMatches"] += 1
 
     def pct(value: float) -> float:
         return (value / total_commits * 100.0) if total_commits else 0.0
@@ -937,10 +910,13 @@ def compute_spec_report(
         contributors = [
             {
                 "login": login,
-                "commitCredit": round(float(credit), 6),
-                "rawCommitMatches": int(row["contributorRawMatches"].get(login, 0)),
+                "commitCredit": round(float(values["commitCredit"]), 6),
+                "rawCommitMatches": int(values["rawCommitMatches"]),
             }
-            for login, credit in sorted(row["contributors"].items(), key=lambda kv: (-kv[1], kv[0]))
+            for login, values in sorted(
+                row["contributors"].items(),
+                key=lambda kv: (-float(kv[1]["commitCredit"]), kv[0]),
+            )
         ]
         entities_out.append(
             {
@@ -961,16 +937,19 @@ def compute_spec_report(
         affiliations_list = [
             {
                 "entity": name,
-                "commitCredit": round(float(credit), 6),
-                "rawCommitMatches": int(row["entityAffiliationRawMatches"].get(name, 0)),
+                "commitCredit": round(float(values["commitCredit"]), 6),
+                "rawCommitMatches": int(values["rawCommitMatches"]),
             }
-            for name, credit in sorted(row["entityAffiliations"].items(), key=lambda kv: (-kv[1], kv[0].lower()))
+            for name, values in sorted(
+                row["entityAffiliations"].items(),
+                key=lambda kv: (-float(kv[1]["commitCredit"]), kv[0].lower()),
+            )
         ]
         status_parts = []
         if row["signedIndividual"]:
-            status_parts.append("public signed individual")
+            status_parts.append("signed individual")
         if affiliations_list:
-            status_parts.append("public entity member/contact")
+            status_parts.append("entity attributed")
         if row["botOrApp"]:
             status_parts.append("bot/app")
         if not status_parts:
@@ -981,7 +960,6 @@ def compute_spec_report(
                 "name": row["name"],
                 "status": ", ".join(status_parts),
                 "signedIndividual": bool(row["signedIndividual"]),
-                "hasPublicEntityAttribution": bool(affiliations_list),
                 "commitCount": int(row["commitCount"]),
                 "prCommitCount": int(row["prCommitCount"]),
                 "directCommitCount": int(row["directCommitCount"]),
@@ -1005,14 +983,25 @@ def compute_spec_report(
         "creditedCommits": credited_commits,
         "uncreditedCommits": uncredited_commits,
         "noLoginCommits": no_login_commits,
-        "creditedPercentageOfAllCommits": round(pct(credited_commits), 6),
-        "uncreditedPercentageOfAllCommits": round(pct(uncredited_commits), 6),
         "firstCommitDate": first_commit_date,
         "lastCommitDate": last_commit_date,
         "repoFetch": dict(repo_meta),
         "entities": entities_out,
         "individuals": individuals_out,
     }
+
+
+def collect_contributor_logins(commits_by_repo: Mapping[str, list[dict[str, Any]]]) -> set[str]:
+    contributors: set[str] = set()
+    for commits in commits_by_repo.values():
+        for commit in commits:
+            if commit.get("prNumber"):
+                login = normalize_login(commit.get("prAuthorLogin"))
+            else:
+                login = normalize_login(commit.get("authorLogin"))
+            if login:
+                contributors.add(login)
+    return contributors
 
 
 def build_totals(spec_reports: list[Mapping[str, Any]]) -> dict[str, int]:
@@ -1026,35 +1015,30 @@ def build_totals(spec_reports: list[Mapping[str, Any]]) -> dict[str, int]:
     }
 
 
-def build_aggregate(spec_reports: list[Mapping[str, Any]], totals: Mapping[str, Any]) -> dict[str, Any]:
-    total_commits = int(totals.get("totalCommits") or 0)
-
+def build_aggregate_rankings(spec_reports: list[Mapping[str, Any]], total_commits: int) -> dict[str, list[dict[str, Any]]]:
     entity_rows: dict[str, dict[str, Any]] = {}
     individual_rows: dict[str, dict[str, Any]] = {}
 
     for spec in spec_reports:
         spec_name = str(spec.get("name") or "")
         for entity in spec.get("entities") or []:
-            entity_id = str(entity.get("entityId") or entity.get("name") or "")
-            if not entity_id:
+            key = str(entity.get("entityId") or entity.get("name") or "")
+            if not key:
                 continue
             row = entity_rows.setdefault(
-                entity_id,
+                key,
                 {
-                    "entityId": entity_id,
-                    "name": entity.get("name") or "",
+                    "entityId": key,
+                    "name": entity.get("name") or key,
                     "gitHubOrganization": entity.get("gitHubOrganization") or "",
-                    "url": entity.get("url") or "",
                     "commitCredit": 0.0,
                     "rawCommitMatches": 0,
-                    "specs": [],
+                    "specs": set(),
                 },
             )
-            credit = float(entity.get("commitCredit") or 0.0)
-            row["commitCredit"] += credit
+            row["commitCredit"] += float(entity.get("commitCredit") or 0)
             row["rawCommitMatches"] += int(entity.get("rawCommitMatches") or 0)
-            row["specs"].append({"name": spec_name, "commitCredit": round(credit, 6)})
-
+            row["specs"].add(spec_name)
         for individual in spec.get("individuals") or []:
             login = str(individual.get("login") or "")
             if not login:
@@ -1064,72 +1048,58 @@ def build_aggregate(spec_reports: list[Mapping[str, Any]], totals: Mapping[str, 
                 {
                     "login": login,
                     "name": individual.get("name") or "",
-                    "statuses": set(),
                     "commitCount": 0,
                     "prCommitCount": 0,
                     "directCommitCount": 0,
-                    "specs": [],
+                    "specs": set(),
                 },
             )
-            if individual.get("name") and not row["name"]:
-                row["name"] = individual.get("name")
-            if individual.get("status"):
-                row["statuses"].add(str(individual.get("status")))
-            count = int(individual.get("commitCount") or 0)
-            row["commitCount"] += count
+            row["commitCount"] += int(individual.get("commitCount") or 0)
             row["prCommitCount"] += int(individual.get("prCommitCount") or 0)
             row["directCommitCount"] += int(individual.get("directCommitCount") or 0)
-            row["specs"].append({"name": spec_name, "commitCount": count})
+            row["specs"].add(spec_name)
 
     def pct(value: float) -> float:
         return (value / total_commits * 100.0) if total_commits else 0.0
 
-    entities_out = []
+    entities = []
     for row in entity_rows.values():
-        specs = sorted(row["specs"], key=lambda item: (-float(item.get("commitCredit") or 0), str(item.get("name") or "")))
-        entities_out.append(
+        entities.append(
             {
                 "entityId": row["entityId"],
                 "name": row["name"],
                 "gitHubOrganization": row["gitHubOrganization"],
-                "url": row["url"],
                 "commitCredit": round(float(row["commitCredit"]), 6),
                 "percentageOfAllCommits": round(pct(float(row["commitCredit"])), 6),
                 "rawCommitMatches": int(row["rawCommitMatches"]),
-                "specCount": len(specs),
-                "topSpecs": specs[:8],
+                "specCount": len(row["specs"]),
             }
         )
-    entities_out.sort(key=lambda row: (-float(row["commitCredit"]), str(row["name"]).lower()))
+    entities.sort(key=lambda row: (-row["commitCredit"], row["name"].lower()))
 
-    individuals_out = []
+    individuals = []
     for row in individual_rows.values():
-        specs = sorted(row["specs"], key=lambda item: (-int(item.get("commitCount") or 0), str(item.get("name") or "")))
-        statuses = sorted(str(status) for status in row["statuses"] if status)
-        individuals_out.append(
+        individuals.append(
             {
                 "login": row["login"],
                 "name": row["name"],
-                "status": "; ".join(statuses),
                 "commitCount": int(row["commitCount"]),
                 "prCommitCount": int(row["prCommitCount"]),
                 "directCommitCount": int(row["directCommitCount"]),
                 "percentageOfAllCommits": round(pct(int(row["commitCount"])), 6),
-                "specCount": len(specs),
-                "topSpecs": specs[:8],
+                "specCount": len(row["specs"]),
             }
         )
-    individuals_out.sort(key=lambda row: (-int(row["commitCount"]), str(row["login"])))
-
-    return {"entities": entities_out, "individuals": individuals_out}
+    individuals.sort(key=lambda row: (-row["commitCount"], row["login"]))
+    return {"entities": entities, "individuals": individuals}
 
 
 def build_html_report(report: Mapping[str, Any]) -> str:
     generated = escape(report["generatedAt"])
     specs = report["specs"]
     totals = report["totals"]
-    aggregate = report.get("aggregate") or {"entities": [], "individuals": []}
     warnings = report.get("warnings") or []
+    aggregate = report.get("aggregate") or {"entities": [], "individuals": []}
     css = """
 :root { color-scheme: light dark; --border: #d0d7de; --muted: #57606a; --bg: #ffffff; --soft: #f6f8fa; --fg: #24292f; --accent: #0969da; }
 @media (prefers-color-scheme: dark) { :root { --border: #30363d; --muted: #8b949e; --bg: #0d1117; --soft: #161b22; --fg: #c9d1d9; --accent: #58a6ff; } }
@@ -1139,25 +1109,24 @@ a { color: var(--accent); }
 header { padding: 2rem; border-bottom: 1px solid var(--border); background: var(--soft); }
 main { padding: 1.5rem 2rem 3rem; max-width: 1500px; margin: 0 auto; }
 h1 { margin: 0 0 .5rem; }
-h2 { margin-top: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: .25rem; }
+h2 { margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
 h3 { margin-top: 1.5rem; }
-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+table { width: 100%; border-collapse: collapse; margin: .75rem 0 1.5rem; font-size: .94rem; }
+th, td { border: 1px solid var(--border); padding: .45rem .55rem; vertical-align: top; }
+th { background: var(--soft); text-align: left; }
+code { background: var(--soft); padding: .1rem .25rem; border-radius: .25rem; }
+.num { text-align: right; white-space: nowrap; }
 .muted { color: var(--muted); }
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1rem; margin: 1rem 0; }
-.card { border: 1px solid var(--border); border-radius: .75rem; padding: 1rem; background: var(--bg); }
-.card strong { display: block; font-size: 1.6rem; }
-table { border-collapse: collapse; width: 100%; margin: .75rem 0 1.5rem; font-size: .95rem; }
-th, td { border: 1px solid var(--border); padding: .45rem .6rem; vertical-align: top; }
-th { text-align: left; background: var(--soft); position: sticky; top: 0; }
-td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.badge { display: inline-block; padding: .12rem .45rem; border: 1px solid var(--border); border-radius: 999px; background: var(--soft); margin: .05rem; font-size: .85rem; }
-.warning { border-left: .35rem solid #bf8700; padding: .75rem 1rem; background: var(--soft); margin: .75rem 0; }
-details { margin: .75rem 0 1.5rem; }
-summary { cursor: pointer; color: var(--accent); }
+.small { font-size: .92rem; }
+.cards { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
+.card { border: 1px solid var(--border); background: var(--soft); border-radius: .5rem; padding: .75rem 1rem; min-width: 11rem; }
+.card strong { display: block; font-size: 1.4rem; }
+.badge { display: inline-block; border: 1px solid var(--border); border-radius: 999px; padding: .08rem .45rem; margin: .08rem .1rem .08rem 0; background: var(--soft); white-space: nowrap; }
+.warning { border-left: .25rem solid #bf8700; padding: .5rem .75rem; background: var(--soft); margin: .5rem 0; }
 .toc { columns: 2 18rem; }
-.small { font-size: .9rem; }
-.provenance dt { font-weight: 600; margin-top: .5rem; }
-.provenance dd { margin-left: 1rem; }
+details { margin: 1rem 0; }
+summary { cursor: pointer; font-weight: 600; }
+.overview td, .overview th { font-size: .9rem; }
 """
     parts = [
         "<!doctype html>",
@@ -1171,11 +1140,11 @@ summary { cursor: pointer; color: var(--accent); }
         "<body>",
         "<header>",
         "<h1>WHATWG contribution attribution report</h1>",
-        f'<p class="muted">Generated {generated}. Branch: <code>{escape(report["branch"])}</code>. Data: <a href="report.json">report.json</a>.</p>',
+        f'<p class="muted">Generated {generated} for branch <code>{escape(report["branch"])}</code>. <a href="report.json">Download report.json</a>.</p>',
         "<p>This report credits commits reachable from each specification repository branch. Commits associated by GitHub with a merged pull request are credited to the PR author. Direct/no-PR commits are credited to the resolved GitHub commit author. Percentages use all commits in the branch as the denominator.</p>",
-        "<p><strong>Public data note:</strong> Participant-data entries explicitly marked non-Public are ignored. Entity attribution uses public GitHub organization memberships and public participant-data contacts only; private or concealed memberships are intentionally ignored, even if the token used for the run could see them.</p>",
-        "<p><strong>Uncredited commits:</strong> These are commits with no reportable credited GitHub login, such as commits for which GitHub has no associated PR author and no resolved GitHub commit author.</p>",
-        "<p><strong>Affiliation disclaimer:</strong> Historical employer changes are not reconstructed. Past contributions are credited to the contributor's current public entity affiliation at generation time.</p>",
+        "<p>Uncredited commits are commits with no associated merged-PR author and no GitHub commit author that GitHub can resolve.</p>",
+        "<p><strong>Public data note:</strong> Entity attribution uses participant-data and public GitHub organization memberships only. Private GitHub organization memberships are intentionally ignored, even if visible to the token used for the run.</p>",
+        "<p><strong>Affiliation disclaimer:</strong> Entity attribution uses the latest public GitHub organization memberships and participant-data contacts at generation time. Historical employer changes are not reconstructed; past contributions are credited to the current visible entity affiliation.</p>",
         "</header>",
         "<main>",
         "<section>",
@@ -1188,7 +1157,6 @@ summary { cursor: pointer; color: var(--accent); }
         card("Credited commits", totals["creditedCommits"]),
         card("Uncredited commits", totals["uncreditedCommits"]),
         "</div>",
-        render_provenance_details(report),
     ]
     if warnings:
         parts.append("<details open><summary>Warnings</summary>")
@@ -1196,15 +1164,14 @@ summary { cursor: pointer; color: var(--accent); }
             parts.append(f'<div class="warning"><strong>{escape(warning.get("area", "warning"))}</strong>: {escape(warning.get("message", ""))}</div>')
         parts.append("</details>")
 
+    parts.append(render_provenance(report.get("provenance") or {}))
+    parts.append("<h3>Specifications overview</h3>")
+    parts.append(render_specs_overview(specs))
+    parts.append("<h3>Aggregate entity ranking</h3>")
+    parts.append(render_aggregate_entities_table(aggregate.get("entities") or [], totals["totalCommits"], limit=30))
+    parts.append("<h3>Aggregate individual ranking</h3>")
+    parts.append(render_aggregate_individuals_table(aggregate.get("individuals") or [], totals["totalCommits"], limit=30))
     parts.extend([
-        "<h3>Specifications overview</h3>",
-        render_specs_summary_table(specs),
-        "<h3>Aggregate rankings</h3>",
-        '<p class="muted small">Aggregated percentages use all commits across all listed spec repositories as the denominator.</p>',
-        "<h4>Top entities</h4>",
-        render_aggregate_entities_table(aggregate.get("entities") or [], limit=25),
-        "<h4>Top individuals</h4>",
-        render_aggregate_individuals_table(aggregate.get("individuals") or [], limit=25),
         "<h3>Specifications</h3>",
         '<ul class="toc">',
     ])
@@ -1220,112 +1187,88 @@ summary { cursor: pointer; color: var(--accent); }
     return "\n".join(parts)
 
 
-def render_provenance_details(report: Mapping[str, Any]) -> str:
-    provenance = report.get("provenance") or {}
-    inputs = provenance.get("inputs") or {}
-    run = provenance.get("run") or {}
-    parts = [
-        '<details><summary>Data provenance</summary>',
-        '<dl class="provenance small">',
-    ]
-    if run:
-        mode = "incremental/cache-assisted" if run.get("incremental") else "full scan"
-        parts.append("<dt>Run</dt>")
-        bits = [f"mode: {escape(mode)}"]
-        if run.get("githubRepository"):
-            bits.append(f"repository: <code>{escape(run.get('githubRepository'))}</code>")
-        if run.get("githubSha"):
-            bits.append(f"script commit: <code>{escape(run.get('githubSha'))}</code>")
-        if run.get("githubRunId"):
-            bits.append(f"run id: <code>{escape(run.get('githubRunId'))}</code>")
-        parts.append(f"<dd>{' · '.join(bits)}</dd>")
-    for label, meta in inputs.items():
-        if not isinstance(meta, Mapping):
-            continue
-        parts.append(f"<dt>{escape(label)}</dt>")
-        configured_url = meta.get("configuredUrl") or meta.get("url") or ""
-        resolved_url = meta.get("resolvedUrl") or meta.get("url") or ""
-        bits = []
-        if configured_url:
-            bits.append(f'<a href="{escape_attr(configured_url)}">configured source</a>')
-        if resolved_url and resolved_url != configured_url:
-            bits.append(f'<a href="{escape_attr(resolved_url)}">commit-pinned source used</a>')
-        elif resolved_url:
-            bits.append(f'<a href="{escape_attr(resolved_url)}">source used</a>')
-        if meta.get("githubRepository"):
-            bits.append(f"repository <code>{escape(meta.get('githubRepository'))}</code>")
-        if meta.get("githubCommitSha"):
-            commit_text = f"commit <code>{escape(str(meta.get('githubCommitSha'))[:12])}</code>"
-            if meta.get("githubCommitUrl"):
-                commit_text = f'<a href="{escape_attr(meta.get("githubCommitUrl"))}">{commit_text}</a>'
-            bits.append(commit_text)
-        if meta.get("etag"):
-            bits.append(f"ETag <code>{escape(meta.get('etag'))}</code>")
-        if meta.get("lastModified"):
-            bits.append(f"Last-Modified <code>{escape(meta.get('lastModified'))}</code>")
-        if meta.get("sha256"):
-            bits.append(f"SHA-256 <code>{escape(meta.get('sha256'))}</code>")
-        if meta.get("fetchedAt"):
-            bits.append(f"fetched <code>{escape(meta.get('fetchedAt'))}</code>")
-        parts.append(f"<dd>{' · '.join(bits)}</dd>")
-    parts.extend(["</dl>", "</details>"])
-    return "\n".join(parts)
-
-
 def card(label: str, value: Any) -> str:
     return f'<div class="card"><span class="muted">{escape(label)}</span><strong>{escape(format_number(value))}</strong></div>'
 
 
-def render_specs_summary_table(specs: list[Mapping[str, Any]]) -> str:
-    if not specs:
-        return '<p class="muted">No specs.</p>'
+def render_provenance(provenance: Mapping[str, Any]) -> str:
+    if not provenance:
+        return ""
+    sources = provenance.get("sources") or {}
+    actions = provenance.get("githubActions") or {}
+    parts = ["<details><summary>Data provenance</summary>"]
+    if sources:
+        parts.append("<table><thead><tr><th>Source</th><th>URL</th><th>Pinned URL</th><th>SHA-256</th><th class=\"num\">Bytes</th></tr></thead><tbody>")
+        for key, meta in sources.items():
+            url = meta.get("url") or ""
+            pinned = meta.get("pinnedUrl") or ""
+            parts.append(
+                "<tr>"
+                f"<td>{escape(key)}</td>"
+                f'<td><a href="{escape_attr(url)}">{escape(url)}</a></td>'
+                f'<td>{f"<a href=\"{escape_attr(pinned)}\">pinned</a>" if pinned else ""}</td>'
+                f"<td><code>{escape(meta.get('sha256', ''))}</code></td>"
+                f"<td class=\"num\">{format_number(meta.get('byteLength', 0))}</td>"
+                "</tr>"
+            )
+        parts.append("</tbody></table>")
+    if actions:
+        parts.append("<p class=\"small muted\">")
+        items = []
+        for label, value in actions.items():
+            if value:
+                items.append(f"{escape(label)}: <code>{escape(value)}</code>")
+        parts.append("; ".join(items))
+        parts.append("</p>")
+    parts.append("</details>")
+    return "\n".join(parts)
+
+
+def render_specs_overview(specs: list[Mapping[str, Any]]) -> str:
     parts = [
-        "<table>",
-        '<thead><tr><th>Spec</th><th>Workstream</th><th>Repo</th><th class="num">Commits</th><th class="num">Credited</th><th class="num">Uncredited</th><th>Top entity</th><th>Top individual</th></tr></thead>',
+        '<table class="overview">',
+        '<thead><tr><th>Spec</th><th>Workstream</th><th>Repo</th><th class="num">Commits</th><th class="num">Credited %</th><th class="num">Uncredited %</th><th>Top entity</th><th>Top individual</th></tr></thead>',
         "<tbody>",
     ]
     for spec in specs:
-        top_entity = (spec.get("entities") or [{}])[0] if spec.get("entities") else {}
-        top_individual = (spec.get("individuals") or [{}])[0] if spec.get("individuals") else {}
-        top_entity_html = ""
-        if top_entity:
-            top_entity_html = f'{escape(top_entity.get("name", ""))} <span class="muted">({format_pct(top_entity.get("percentageOfAllCommits", 0))})</span>'
-        top_individual_html = ""
-        if top_individual:
-            login = top_individual.get("login") or ""
-            top_individual_html = f'<a href="https://github.com/{escape_attr(login)}">{escape(login)}</a> <span class="muted">({format_pct(top_individual.get("percentageOfAllCommits", 0))})</span>'
+        total = int(spec.get("totalCommits") or 0)
+        credited_pct = (int(spec.get("creditedCommits") or 0) / total * 100.0) if total else 0.0
+        uncredited_pct = (int(spec.get("uncreditedCommits") or 0) / total * 100.0) if total else 0.0
+        top_entity = ""
+        if spec.get("entities"):
+            row = spec["entities"][0]
+            top_entity = f'{escape(row.get("name", ""))} ({format_credit(row.get("commitCredit", 0))})'
+        top_individual = ""
+        if spec.get("individuals"):
+            row = spec["individuals"][0]
+            top_individual = f'{escape(row.get("login", ""))} ({format_number(row.get("commitCount", 0))})'
         parts.append(
             "<tr>"
             f'<td><a href="#{spec_anchor(spec)}">{escape(spec.get("name", ""))}</a></td>'
             f'<td>{escape(spec.get("workstreamTitle", ""))}</td>'
             f'<td><a href="{escape_attr(spec.get("repositoryUrl", ""))}">{escape(spec.get("repository", ""))}</a></td>'
-            f'<td class="num">{format_number(spec.get("totalCommits", 0))}</td>'
-            f'<td class="num">{format_pct(spec.get("creditedPercentageOfAllCommits", 0))}</td>'
-            f'<td class="num">{format_pct(spec.get("uncreditedPercentageOfAllCommits", 0))}</td>'
-            f"<td>{top_entity_html}</td>"
-            f"<td>{top_individual_html}</td>"
+            f'<td class="num">{format_number(total)}</td>'
+            f'<td class="num">{format_pct(credited_pct)}</td>'
+            f'<td class="num">{format_pct(uncredited_pct)}</td>'
+            f"<td>{top_entity}</td>"
+            f"<td>{top_individual}</td>"
             "</tr>"
         )
     parts.extend(["</tbody></table>"])
     return "\n".join(parts)
 
 
-def render_aggregate_entities_table(rows: list[Mapping[str, Any]], limit: int = 25) -> str:
+def render_aggregate_entities_table(rows: list[Mapping[str, Any]], total: int, limit: int = 30) -> str:
     if not rows:
         return '<p class="muted">No entity-attributed commits.</p>'
-    shown = rows[:limit]
     parts = [
         "<table>",
-        '<thead><tr><th class="num">#</th><th>Entity</th><th>GitHub org</th><th class="num">Commit credit</th><th class="num">% of all commits</th><th class="num">Specs</th><th>Top specs</th></tr></thead>',
+        '<thead><tr><th class="num">#</th><th>Entity</th><th>GitHub org</th><th class="num">Commit credit</th><th class="num">% of all commits</th><th class="num">Specs</th></tr></thead>',
         "<tbody>",
     ]
-    for idx, row in enumerate(shown, start=1):
+    for idx, row in enumerate(rows[:limit], start=1):
         org = row.get("gitHubOrganization") or ""
         org_html = f'<a href="https://github.com/{escape_attr(org)}">{escape(org)}</a>' if org else ""
-        top_specs = " ".join(
-            f'<span class="badge">{escape(item.get("name", ""))}: {format_credit(item.get("commitCredit", 0))}</span>'
-            for item in row.get("topSpecs", [])
-        )
         parts.append(
             "<tr>"
             f'<td class="num">{idx}</td>'
@@ -1334,30 +1277,24 @@ def render_aggregate_entities_table(rows: list[Mapping[str, Any]], limit: int = 
             f'<td class="num">{format_credit(row.get("commitCredit", 0))}</td>'
             f'<td class="num">{format_pct(row.get("percentageOfAllCommits", 0))}</td>'
             f'<td class="num">{format_number(row.get("specCount", 0))}</td>'
-            f"<td>{top_specs}</td>"
             "</tr>"
         )
     parts.extend(["</tbody></table>"])
     if len(rows) > limit:
-        parts.append(f'<p class="muted small">Showing top {limit} of {len(rows)} entities. Full data is in <a href="report.json">report.json</a>.</p>')
+        parts.append(f'<p class="muted small">Showing top {limit} of {len(rows)} entities.</p>')
     return "\n".join(parts)
 
 
-def render_aggregate_individuals_table(rows: list[Mapping[str, Any]], limit: int = 25) -> str:
+def render_aggregate_individuals_table(rows: list[Mapping[str, Any]], total: int, limit: int = 30) -> str:
     if not rows:
         return '<p class="muted">No individual-attributed commits.</p>'
-    shown = rows[:limit]
     parts = [
         "<table>",
-        '<thead><tr><th class="num">#</th><th>GitHub login</th><th>Name</th><th class="num">Commits</th><th class="num">PR commits</th><th class="num">Direct commits</th><th class="num">% of all commits</th><th class="num">Specs</th><th>Top specs</th></tr></thead>',
+        '<thead><tr><th class="num">#</th><th>GitHub login</th><th>Name</th><th class="num">Commits</th><th class="num">PR commits</th><th class="num">Direct/no-PR commits</th><th class="num">% of all commits</th><th class="num">Specs</th></tr></thead>',
         "<tbody>",
     ]
-    for idx, row in enumerate(shown, start=1):
+    for idx, row in enumerate(rows[:limit], start=1):
         login = row.get("login") or ""
-        top_specs = " ".join(
-            f'<span class="badge">{escape(item.get("name", ""))}: {format_number(item.get("commitCount", 0))}</span>'
-            for item in row.get("topSpecs", [])
-        )
         parts.append(
             "<tr>"
             f'<td class="num">{idx}</td>'
@@ -1368,19 +1305,17 @@ def render_aggregate_individuals_table(rows: list[Mapping[str, Any]], limit: int
             f'<td class="num">{format_number(row.get("directCommitCount", 0))}</td>'
             f'<td class="num">{format_pct(row.get("percentageOfAllCommits", 0))}</td>'
             f'<td class="num">{format_number(row.get("specCount", 0))}</td>'
-            f"<td>{top_specs}</td>"
             "</tr>"
         )
     parts.extend(["</tbody></table>"])
     if len(rows) > limit:
-        parts.append(f'<p class="muted small">Showing top {limit} of {len(rows)} individuals. Full data is in <a href="report.json">report.json</a>.</p>')
+        parts.append(f'<p class="muted small">Showing top {limit} of {len(rows)} individuals.</p>')
     return "\n".join(parts)
 
 
 def render_spec_section(spec: Mapping[str, Any]) -> str:
     total = int(spec.get("totalCommits") or 0)
     anchor = spec_anchor(spec)
-    individual_rows = spec.get("individuals") or []
     parts = [
         f'<section id="{anchor}">',
         f'<h2>{escape(spec["name"])} <span class="muted">{escape(spec["workstreamTitle"])} workstream</span></h2>',
@@ -1399,8 +1334,9 @@ def render_spec_section(spec: Mapping[str, Any]) -> str:
 
     parts.append("<h3>Entities</h3>")
     parts.append(render_entities_table(spec.get("entities") or [], total))
-    parts.append(f'<details><summary>Individuals ({len(individual_rows)})</summary>')
-    parts.append(render_individuals_table(individual_rows, total))
+    individuals = spec.get("individuals") or []
+    parts.append(f'<details><summary>Individuals ({len(individuals)})</summary>')
+    parts.append(render_individuals_table(individuals, total))
     parts.append("</details>")
     parts.append("</section>")
     return "\n".join(parts)
@@ -1411,24 +1347,24 @@ def render_entities_table(rows: list[Mapping[str, Any]], total: int) -> str:
         return '<p class="muted">No entity-attributed commits.</p>'
     parts = [
         "<table>",
-        '<thead><tr><th class="num">#</th><th>Entity</th><th>GitHub org</th><th class="num">Commit credit</th><th class="num">% of all commits</th><th>Contributor credit</th></tr></thead>',
+        '<thead><tr><th class="num">#</th><th>Entity</th><th>GitHub org</th><th class="num">Commit credit</th><th class="num">% of all commits</th><th>Contributors</th></tr></thead>',
         "<tbody>",
     ]
     for idx, row in enumerate(rows, start=1):
-        contributors = " ".join(
-            contributor_badge(c.get("login", ""), c.get("commitCredit", 0), c.get("rawCommitMatches", 0))
-            for c in row.get("contributors", [])[:12]
-        )
+        contributors = " ".join(render_credit_badge(c["login"], c.get("commitCredit", 0), c.get("rawCommitMatches", 0)) for c in row.get("contributors", [])[:12])
         if len(row.get("contributors", [])) > 12:
             contributors += f' <span class="muted">+{len(row.get("contributors", [])) - 12} more</span>'
         org = row.get("gitHubOrganization") or ""
         org_html = f'<a href="https://github.com/{escape_attr(org)}">{escape(org)}</a>' if org else ""
+        title = ""
+        if not math.isclose(float(row.get("commitCredit", 0)), float(row.get("rawCommitMatches", 0))):
+            title = f' title="{escape_attr(row.get("rawCommitMatches", 0))} raw matched commits before fractional attribution"'
         parts.append(
             "<tr>"
             f'<td class="num">{idx}</td>'
             f'<td>{escape(row.get("name", ""))}</td>'
             f"<td>{org_html}</td>"
-            f'<td class="num">{format_credit(row.get("commitCredit", 0))}</td>'
+            f'<td class="num"{title}>{format_credit(row.get("commitCredit", 0))}</td>'
             f'<td class="num">{format_pct(row.get("percentageOfAllCommits", 0))}</td>'
             f"<td>{contributors}</td>"
             "</tr>"
@@ -1437,20 +1373,30 @@ def render_entities_table(rows: list[Mapping[str, Any]], total: int) -> str:
     return "\n".join(parts)
 
 
+def render_credit_badge(label: str, credit: Any, raw: Any) -> str:
+    try:
+        credit_f = float(credit)
+        raw_f = float(raw)
+    except (TypeError, ValueError):
+        credit_f = 0.0
+        raw_f = 0.0
+    title = ""
+    if raw_f and not math.isclose(credit_f, raw_f):
+        title = f' title="{escape_attr(raw)} raw matched commits before fractional attribution"'
+    return f'<span class="badge"{title}>{escape(label)}: {format_credit(credit)}</span>'
+
+
 def render_individuals_table(rows: list[Mapping[str, Any]], total: int) -> str:
     if not rows:
         return '<p class="muted">No individual-attributed commits.</p>'
     parts = [
         "<table>",
-        '<thead><tr><th class="num">#</th><th>GitHub login</th><th>Name</th><th>Status</th><th class="num">Commits</th><th class="num">PR commits</th><th class="num">Direct commits</th><th class="num">% of all commits</th><th>Entity affiliations</th></tr></thead>',
+        '<thead><tr><th class="num">#</th><th>GitHub login</th><th>Name</th><th>Status</th><th class="num">Commits</th><th class="num">PR commits</th><th class="num">Direct/no-PR commits</th><th class="num">% of all commits</th><th>Entity affiliations</th></tr></thead>',
         "<tbody>",
     ]
     for idx, row in enumerate(rows, start=1):
         login = row.get("login") or ""
-        affiliations = " ".join(
-            affiliation_badge(a.get("entity", ""), a.get("commitCredit", 0), a.get("rawCommitMatches", 0))
-            for a in row.get("entityAffiliations", [])[:8]
-        )
+        affiliations = " ".join(render_credit_badge(a["entity"], a.get("commitCredit", 0), a.get("rawCommitMatches", 0)) for a in row.get("entityAffiliations", [])[:8])
         if len(row.get("entityAffiliations", [])) > 8:
             affiliations += f' <span class="muted">+{len(row.get("entityAffiliations", [])) - 8} more</span>'
         parts.append(
@@ -1468,32 +1414,6 @@ def render_individuals_table(rows: list[Mapping[str, Any]], total: int) -> str:
         )
     parts.extend(["</tbody></table>"])
     return "\n".join(parts)
-
-
-def contributor_badge(login: str, credit: Any, raw_matches: Any) -> str:
-    title = ""
-    try:
-        credit_f = float(credit)
-        raw_i = int(raw_matches)
-    except (TypeError, ValueError):
-        credit_f = 0.0
-        raw_i = 0
-    if raw_i and not math.isclose(credit_f, raw_i):
-        title = f' title="{raw_i} raw matched commits before fractional attribution"'
-    return f'<span class="badge"{title}>{escape(login)}: {format_credit(credit)}</span>'
-
-
-def affiliation_badge(name: str, credit: Any, raw_matches: Any) -> str:
-    title = ""
-    try:
-        credit_f = float(credit)
-        raw_i = int(raw_matches)
-    except (TypeError, ValueError):
-        credit_f = 0.0
-        raw_i = 0
-    if raw_i and not math.isclose(credit_f, raw_i):
-        title = f' title="{raw_i} raw matched commits before fractional attribution"'
-    return f'<span class="badge"{title}>{escape(name)}: {format_credit(credit)}</span>'
 
 
 def spec_anchor(spec: Mapping[str, Any]) -> str:
@@ -1553,7 +1473,7 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate WHATWG per-spec contribution attribution report.")
     parser.add_argument("--output", default="public", help="Output directory for index.html and report.json")
     parser.add_argument("--branch", default="main", help="Branch/ref to analyze in every spec repository")
-    parser.add_argument("--sg-db-url", default=DEFAULT_SG_DB_URL, help="URL of whatwg/sg db.json")
+    parser.add_argument("--sg-db-url", default=DEFAULT_SG_DB_URL, help="WHATWG Steering Group db.json URL")
     parser.add_argument("--entities-url", default=DEFAULT_ENTITIES_URL)
     parser.add_argument("--individuals-url", default=DEFAULT_INDIVIDUALS_URL)
     parser.add_argument("--github-rest-url", default=DEFAULT_GITHUB_REST_URL)
@@ -1565,26 +1485,40 @@ def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
     scan.add_argument("--incremental", action="store_true", help="Stop scanning a repo once an already-cached page is reached")
     scan.add_argument("--full-scan", action="store_true", help="Ignore incremental stopping and scan full history")
     parser.add_argument("--page-size", type=int, default=100, choices=range(1, 101), metavar="1-100")
-    parser.add_argument("--include-unverified", action="store_true", help="Include unverified public participant-data entries")
+    parser.add_argument("--include-unverified", action="store_true", help="Include unverified participant-data entries")
     parser.add_argument("--ignore-participant-workstreams", action="store_true", help="Do not filter participant entries by workstream")
     parser.add_argument(
         "--entity-attribution",
         choices=["fractional", "duplicate"],
         default="fractional",
-        help="How to handle a contributor who maps to multiple public entities for the same spec",
+        help="How to handle a contributor who maps to multiple entities for the same spec",
     )
     parser.add_argument(
         "--affiliation-source",
-        choices=["user-orgs", "org-members", "both"],
+        choices=["user-orgs", "org-public-members", "org-members", "both"],
         default="user-orgs",
         help=(
-            "How to map GitHub users to public entity GitHub organizations. user-orgs uses public user org memberships; "
-            "org-members crawls every entity org's public_members endpoint. Private memberships are never used."
+            "How to map GitHub users to entity GitHub organizations. user-orgs uses public orgs listed on contributor profiles; "
+            "org-public-members crawls each entity org's public_members endpoint; org-members is accepted as a legacy alias for org-public-members."
         ),
     )
-    parser.add_argument("--no-entity-contacts", action="store_true", help="Do not use public participant-data contact GitHub IDs as entity affiliations")
+    parser.add_argument("--no-entity-contacts", action="store_true", help="Do not use participant-data contact GitHub IDs as entity affiliations")
     parser.add_argument("--limit-specs", type=int, default=0, help="Debugging: limit number of specs processed")
     return parser.parse_args(argv)
+
+
+def github_actions_metadata() -> dict[str, str]:
+    keys = [
+        "GITHUB_REPOSITORY",
+        "GITHUB_RUN_ID",
+        "GITHUB_RUN_NUMBER",
+        "GITHUB_RUN_ATTEMPT",
+        "GITHUB_SHA",
+        "GITHUB_REF_NAME",
+        "GITHUB_WORKFLOW",
+        "GITHUB_ACTOR",
+    ]
+    return {key: os.environ.get(key, "") for key in keys if os.environ.get(key, "")}
 
 
 def main(argv: Optional[list[str]] = None) -> int:
@@ -1602,23 +1536,15 @@ def main(argv: Optional[list[str]] = None) -> int:
         api_version=args.github_api_version,
     )
 
-    print("Resolving input source snapshots", file=sys.stderr)
-    sg_db_fetch_url, sg_db_source_meta = resolve_raw_github_source(client, args.sg_db_url, warnings)
-    entities_fetch_url, entities_source_meta = resolve_raw_github_source(client, args.entities_url, warnings)
-    individuals_fetch_url, individuals_source_meta = resolve_raw_github_source(client, args.individuals_url, warnings)
-
     print("Loading WHATWG standards and participant data", file=sys.stderr)
-    specs, sg_db_meta = load_specs(sg_db_fetch_url, warnings)
-    sg_db_meta = {**sg_db_source_meta, **sg_db_meta}
+    specs, sg_meta = load_specs(args.sg_db_url, client, warnings)
     if args.limit_specs:
         specs = specs[: args.limit_specs]
-    specs = [infer_repo_from_spec_url(spec, warnings) for spec in specs]
 
-    entities, non_public_entity_logins, entities_meta = load_entities(entities_fetch_url, args.include_unverified, warnings)
-    entities_meta = {**entities_source_meta, **entities_meta}
-    individuals, non_public_individual_logins, individuals_meta = load_individuals(individuals_fetch_url, args.include_unverified)
-    individuals_meta = {**individuals_source_meta, **individuals_meta}
-    non_public_participant_logins = non_public_entity_logins | non_public_individual_logins
+    entities_data, entities_meta = fetch_json_with_meta(args.entities_url, client)
+    individuals_data, individuals_meta = fetch_json_with_meta(args.individuals_url, client)
+    entities = load_entities(entities_data, args.include_unverified, warnings)
+    individuals = load_individuals(individuals_data, args.include_unverified)
     entities_by_id = {entity.entity_id: entity for entity in entities}
 
     cache = load_cache(args.cache_file)
@@ -1640,8 +1566,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         commits_by_repo[spec.repo_full_name] = commits
         repo_meta_by_repo[spec.repo_full_name] = repo_meta
 
-    contributors = collect_contributor_logins(commits_by_repo, non_public_participant_logins)
-    print(f"Collected {len(contributors)} unique reportable contributor logins", file=sys.stderr)
+    contributors = collect_contributor_logins(commits_by_repo)
+    print(f"Collected {len(contributors)} unique credited contributor logins", file=sys.stderr)
     login_to_entity_ids = build_affiliations(
         client=client,
         contributors=contributors,
@@ -1663,14 +1589,13 @@ def main(argv: Optional[list[str]] = None) -> int:
             entities_by_id=entities_by_id,
             individuals_by_login=individuals,
             login_to_entity_ids=login_to_entity_ids,
-            non_public_participant_logins=non_public_participant_logins,
             entity_attribution=args.entity_attribution,
             ignore_participant_workstreams=args.ignore_participant_workstreams,
         )
         spec_reports.append(spec_report)
 
     totals = build_totals(spec_reports)
-    aggregate = build_aggregate(spec_reports, totals)
+    aggregate = build_aggregate_rankings(spec_reports, totals["totalCommits"])
     report = {
         "generatedAt": now_iso(),
         "branch": args.branch,
@@ -1678,7 +1603,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             "sgDbUrl": args.sg_db_url,
             "entitiesUrl": args.entities_url,
             "individualsUrl": args.individuals_url,
-            "affiliationSource": args.affiliation_source,
+            "affiliationSource": "org-public-members" if args.affiliation_source == "org-members" else args.affiliation_source,
             "includeEntityContacts": not args.no_entity_contacts,
             "includeUnverifiedParticipants": bool(args.include_unverified),
             "creditDirectCommits": True,
@@ -1686,26 +1611,25 @@ def main(argv: Optional[list[str]] = None) -> int:
             "ignoreParticipantWorkstreams": bool(args.ignore_participant_workstreams),
             "incremental": incremental,
         },
+        "publicDataNote": (
+            "Entity attribution uses participant-data and public GitHub organization memberships only. "
+            "Private GitHub organization memberships are intentionally ignored, even if visible to the token used for the run."
+        ),
+        "disclaimer": (
+            "Entity attribution uses the latest public GitHub organization memberships and participant-data contacts at generation time. "
+            "Historical employer changes are not reconstructed; past contributions are credited to the current visible entity affiliation."
+        ),
         "provenance": {
-            "inputs": {
-                "whatwg/sg db.json": sg_db_meta,
-                "participant-data entities.json": entities_meta,
-                "participant-data individuals.json": individuals_meta,
+            "sources": {
+                "sg-db": sg_meta,
+                "entities": entities_meta,
+                "individuals": individuals_meta,
             },
-            "run": {
-                "incremental": incremental,
-                "githubRepository": os.environ.get("GITHUB_REPOSITORY", ""),
-                "githubSha": os.environ.get("GITHUB_SHA", ""),
-                "githubRunId": os.environ.get("GITHUB_RUN_ID", ""),
-                "githubRunAttempt": os.environ.get("GITHUB_RUN_ATTEMPT", ""),
+            "githubActions": github_actions_metadata(),
+            "script": {
+                "cacheVersion": CACHE_VERSION,
             },
         },
-        "disclaimer": (
-            "Participant-data entries explicitly marked non-Public are ignored. Entity attribution uses public GitHub organization memberships "
-            "and public participant-data contacts only; private or concealed memberships are intentionally ignored, even if the token used for "
-            "the run could see them. Historical employer changes are not reconstructed, so past contributions are credited to the contributor's "
-            "current public entity affiliation at generation time."
-        ),
         "totals": totals,
         "aggregate": aggregate,
         "specs": spec_reports,
@@ -1725,8 +1649,6 @@ def main(argv: Optional[list[str]] = None) -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except KeyboardInterrupt:
-        raise SystemExit(130)
     except ReportError as exc:
         print(f"error: {exc}", file=sys.stderr)
         raise SystemExit(1)
