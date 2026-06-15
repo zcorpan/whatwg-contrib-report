@@ -2890,7 +2890,7 @@
           "prUrl": "https://github.com/whatwg/compat/pull/198"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:06Z",
+      "fetchedAt": "2026-06-15T10:32:42Z",
       "repo": "whatwg/compat",
       "totalCount": 222
     },
@@ -4848,7 +4848,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:40Z",
+      "fetchedAt": "2026-06-15T10:33:18Z",
       "repo": "whatwg/compression",
       "totalCount": 150
     },
@@ -6741,7 +6741,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:08Z",
+      "fetchedAt": "2026-06-15T10:32:44Z",
       "repo": "whatwg/console",
       "totalCount": 145
     },
@@ -11598,7 +11598,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:14Z",
+      "fetchedAt": "2026-06-15T10:32:51Z",
       "repo": "whatwg/cookiestore",
       "totalCount": 373
     },
@@ -37060,7 +37060,7 @@
           "prUrl": "https://github.com/whatwg/dom/pull/971"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:10Z",
+      "fetchedAt": "2026-06-15T10:32:47Z",
       "repo": "whatwg/dom",
       "totalCount": 1958
     },
@@ -43698,7 +43698,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:12Z",
+      "fetchedAt": "2026-06-15T10:32:49Z",
       "repo": "whatwg/encoding",
       "totalCount": 510
     },
@@ -57837,7 +57837,7 @@
           "prUrl": "https://github.com/whatwg/fetch/pull/742"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:18Z",
+      "fetchedAt": "2026-06-15T10:32:53Z",
       "repo": "whatwg/fetch",
       "totalCount": 1087
     },
@@ -60692,7 +60692,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:36Z",
+      "fetchedAt": "2026-06-15T10:33:14Z",
       "repo": "whatwg/fs",
       "totalCount": 219
     },
@@ -64223,7 +64223,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:21Z",
+      "fetchedAt": "2026-06-15T10:32:56Z",
       "repo": "whatwg/fullscreen",
       "totalCount": 271
     },
@@ -77879,6 +77879,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "15ce0d167e4ba413ae2948ee1868d83c38c363f8": {
+          "authorEmail": "tschuster@mozilla.com",
+          "authorLogin": "evilpie",
+          "authorName": "Tom Schuster",
+          "committedDate": "2026-06-10T08:45:50Z",
+          "oid": "15ce0d167e4ba413ae2948ee1868d83c38c363f8",
+          "prAuthorLogin": "evilpie",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-06-10T08:45:50Z",
+          "prNumber": 12552,
+          "prUrl": "https://github.com/whatwg/html/pull/12552"
         },
         "15ce404bed54e8e4818576f1977020349042aa08": {
           "authorEmail": "ian@hixie.ch",
@@ -126954,6 +126967,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "620bdf6c05f323f14a245edd0c8aafa8de60ace6": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-06-12T10:55:17Z",
+          "oid": "620bdf6c05f323f14a245edd0c8aafa8de60ace6",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-06-12T10:55:18Z",
+          "prNumber": 12531,
+          "prUrl": "https://github.com/whatwg/html/pull/12531"
         },
         "621e381fe0931bdbd6db8f01aafb621e9ba1009f": {
           "authorEmail": "annevk@annevk.nl",
@@ -204084,6 +204110,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "da0830edb272f248e125607b6d3f297a5bc55c69": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-06-08T18:47:41Z",
+          "oid": "da0830edb272f248e125607b6d3f297a5bc55c69",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-06-08T18:47:41Z",
+          "prNumber": 12495,
+          "prUrl": "https://github.com/whatwg/html/pull/12495"
+        },
         "da095fd8b075e9f0c3b140816acfdb83593cd295": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -228317,9 +228356,9 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:25Z",
+      "fetchedAt": "2026-06-15T10:33:02Z",
       "repo": "whatwg/html",
-      "totalCount": 12622
+      "totalCount": 12625
     },
     "whatwg/infra@main": {
       "branch": "main",
@@ -230964,7 +231003,7 @@
           "prUrl": "https://github.com/whatwg/infra/pull/659"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:28Z",
+      "fetchedAt": "2026-06-15T10:33:05Z",
       "repo": "whatwg/infra",
       "totalCount": 203
     },
@@ -235795,7 +235834,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:30Z",
+      "fetchedAt": "2026-06-15T10:33:07Z",
       "repo": "whatwg/mimesniff",
       "totalCount": 371
     },
@@ -238845,7 +238884,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:32Z",
+      "fetchedAt": "2026-06-15T10:33:10Z",
       "repo": "whatwg/notifications",
       "totalCount": 234
     },
@@ -240881,7 +240920,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:34Z",
+      "fetchedAt": "2026-06-15T10:33:12Z",
       "repo": "whatwg/quirks",
       "totalCount": 156
     },
@@ -242280,7 +242319,7 @@
           "prUrl": "https://github.com/whatwg/storage/pull/64"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:38Z",
+      "fetchedAt": "2026-06-15T10:33:16Z",
       "repo": "whatwg/storage",
       "totalCount": 107
     },
@@ -256029,7 +256068,7 @@
           "prUrl": "https://github.com/whatwg/streams/pull/710"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:42Z",
+      "fetchedAt": "2026-06-15T10:33:20Z",
       "repo": "whatwg/streams",
       "totalCount": 1057
     },
@@ -256232,7 +256271,7 @@
           "prUrl": "https://github.com/whatwg/testutils/pull/13"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:43Z",
+      "fetchedAt": "2026-06-15T10:33:21Z",
       "repo": "whatwg/testutils",
       "totalCount": 15
     },
@@ -265327,7 +265366,7 @@
           "prUrl": "https://github.com/whatwg/url/pull/780"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:47Z",
+      "fetchedAt": "2026-06-15T10:33:23Z",
       "repo": "whatwg/url",
       "totalCount": 699
     },
@@ -268169,7 +268208,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:49Z",
+      "fetchedAt": "2026-06-15T10:33:25Z",
       "repo": "whatwg/urlpattern",
       "totalCount": 218
     },
@@ -291174,7 +291213,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:52Z",
+      "fetchedAt": "2026-06-15T10:33:27Z",
       "repo": "whatwg/webidl",
       "totalCount": 1769
     },
@@ -291559,7 +291598,7 @@
           "prUrl": "https://github.com/whatwg/websockets/pull/5"
         }
       },
-      "fetchedAt": "2026-06-08T09:03:26Z",
+      "fetchedAt": "2026-06-15T10:33:03Z",
       "repo": "whatwg/websockets",
       "totalCount": 29
     },
@@ -296650,7 +296689,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-06-08T09:03:54Z",
+      "fetchedAt": "2026-06-15T10:33:29Z",
       "repo": "whatwg/xhr",
       "totalCount": 391
     }
