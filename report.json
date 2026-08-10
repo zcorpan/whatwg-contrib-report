@@ -6262,7 +6262,7 @@
   },
   "branch": "main",
   "disclaimer": "Entity attribution uses the latest public GitHub organization memberships and participant-data contacts at generation time. Historical employer changes are not reconstructed; past contributions are credited to the current visible entity affiliation.",
-  "generatedAt": "2026-08-03T07:47:28Z",
+  "generatedAt": "2026-08-10T05:44:40Z",
   "inputs": {
     "affiliationSource": "user-orgs",
     "creditDirectCommits": true,
@@ -6281,8 +6281,8 @@
       "GITHUB_REF_NAME": "main",
       "GITHUB_REPOSITORY": "zcorpan/whatwg-contrib-report",
       "GITHUB_RUN_ATTEMPT": "1",
-      "GITHUB_RUN_ID": "30794746208",
-      "GITHUB_RUN_NUMBER": "13",
+      "GITHUB_RUN_ID": "31359438437",
+      "GITHUB_RUN_NUMBER": "14",
       "GITHUB_SHA": "60ebf49c6c08e736b1f36d8deda606785a4ea3d3",
       "GITHUB_WORKFLOW": "WHATWG contribution report"
     },
@@ -6292,21 +6292,21 @@
     "sources": {
       "entities": {
         "byteLength": 68782,
-        "fetchedAt": "2026-08-03T07:45:24Z",
-        "pinnedUrl": "https://raw.githubusercontent.com/whatwg/participant-data/36dac49222f72c78c69ce89e671d9c05c433826e/entities.json",
+        "fetchedAt": "2026-08-10T05:42:29Z",
+        "pinnedUrl": "https://raw.githubusercontent.com/whatwg/participant-data/5e18d9adbcd15766549621c077e92397a820f566/entities.json",
         "sha256": "9f5e0b8da8074b5999e8f36c858150e6c30d53c3d051e6c1492514cb5ea0f558",
         "url": "https://raw.githubusercontent.com/whatwg/participant-data/main/entities.json"
       },
       "individuals": {
-        "byteLength": 162981,
-        "fetchedAt": "2026-08-03T07:45:24Z",
-        "pinnedUrl": "https://raw.githubusercontent.com/whatwg/participant-data/36dac49222f72c78c69ce89e671d9c05c433826e/individuals.json",
-        "sha256": "d7f29897e68ab822725b160f1852c1149d1dc761e0d7392a0f62ec569126acc2",
+        "byteLength": 163958,
+        "fetchedAt": "2026-08-10T05:42:29Z",
+        "pinnedUrl": "https://raw.githubusercontent.com/whatwg/participant-data/5e18d9adbcd15766549621c077e92397a820f566/individuals.json",
+        "sha256": "62833b0b1a710c9f25b4f87ca44ddc9569682cb439bd144911e90c59bd977599",
         "url": "https://raw.githubusercontent.com/whatwg/participant-data/main/individuals.json"
       },
       "sg-db": {
         "byteLength": 21125,
-        "fetchedAt": "2026-08-03T07:45:24Z",
+        "fetchedAt": "2026-08-10T05:42:28Z",
         "pinnedUrl": "https://raw.githubusercontent.com/whatwg/sg/379d4581b269dc0fe78e7593fd799b57ac411b5e/db.json",
         "sha256": "4c9fda98ed7740c6b02f1c268ce9eb9457002e162008ec8141b59b5c9709ce11",
         "url": "https://raw.githubusercontent.com/whatwg/sg/main/db.json"
