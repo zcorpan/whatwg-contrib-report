@@ -2890,7 +2890,7 @@
           "prUrl": "https://github.com/whatwg/compat/pull/198"
         }
       },
-      "fetchedAt": "2026-08-17T04:56:34Z",
+      "fetchedAt": "2026-08-24T04:59:54Z",
       "repo": "whatwg/compat",
       "totalCount": 222
     },
@@ -4848,7 +4848,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:57:04Z",
+      "fetchedAt": "2026-08-24T05:00:33Z",
       "repo": "whatwg/compression",
       "totalCount": 150
     },
@@ -6741,7 +6741,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:36Z",
+      "fetchedAt": "2026-08-24T04:59:56Z",
       "repo": "whatwg/console",
       "totalCount": 145
     },
@@ -11598,7 +11598,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:42Z",
+      "fetchedAt": "2026-08-24T05:00:04Z",
       "repo": "whatwg/cookiestore",
       "totalCount": 373
     },
@@ -26425,6 +26425,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "94d41b30c97fe086c76be8a692ff74ed4db08407": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-20T16:18:37Z",
+          "oid": "94d41b30c97fe086c76be8a692ff74ed4db08407",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T16:18:38Z",
+          "prNumber": 1496,
+          "prUrl": "https://github.com/whatwg/dom/pull/1496"
+        },
         "94e2d0b92c7ae9140e6721b54942f3fc54d73838": {
           "authorEmail": "ms2ger@gmail.com",
           "authorLogin": "ms2ger",
@@ -37333,9 +37346,9 @@
           "prUrl": "https://github.com/whatwg/dom/pull/971"
         }
       },
-      "fetchedAt": "2026-08-17T04:56:38Z",
+      "fetchedAt": "2026-08-24T05:00:00Z",
       "repo": "whatwg/dom",
-      "totalCount": 1979
+      "totalCount": 1980
     },
     "whatwg/encoding@main": {
       "branch": "main",
@@ -43971,7 +43984,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:40Z",
+      "fetchedAt": "2026-08-24T05:00:02Z",
       "repo": "whatwg/encoding",
       "totalCount": 510
     },
@@ -48293,6 +48306,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "4a2b67d0d5ea7942ff80f6fcc3da3d587c03d0ce": {
+          "authorEmail": "farellh12@gmail.com",
+          "authorLogin": "eliasilyz",
+          "authorName": "Irvan Farael Hanafi",
+          "committedDate": "2026-08-20T09:07:59Z",
+          "oid": "4a2b67d0d5ea7942ff80f6fcc3da3d587c03d0ce",
+          "prAuthorLogin": "eliasilyz",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T09:07:59Z",
+          "prNumber": 1949,
+          "prUrl": "https://github.com/whatwg/fetch/pull/1949"
         },
         "4a71bba0f5f46fa58d0386936848b234fe8908aa": {
           "authorEmail": "annevk@annevk.nl",
@@ -58149,9 +58175,9 @@
           "prUrl": "https://github.com/whatwg/fetch/pull/742"
         }
       },
-      "fetchedAt": "2026-08-17T04:56:44Z",
+      "fetchedAt": "2026-08-24T05:00:09Z",
       "repo": "whatwg/fetch",
-      "totalCount": 1090
+      "totalCount": 1091
     },
     "whatwg/fs@main": {
       "branch": "main",
@@ -61004,7 +61030,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:57:00Z",
+      "fetchedAt": "2026-08-24T05:00:27Z",
       "repo": "whatwg/fs",
       "totalCount": 219
     },
@@ -64548,7 +64574,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:46Z",
+      "fetchedAt": "2026-08-24T05:00:11Z",
       "repo": "whatwg/fullscreen",
       "totalCount": 272
     },
@@ -67778,6 +67804,19 @@
           "prMergedAt": "2024-12-06T07:09:14Z",
           "prNumber": 10823,
           "prUrl": "https://github.com/whatwg/html/pull/10823"
+        },
+        "044c8c77e13665a964339dd6efaef4013469445c": {
+          "authorEmail": "minseong130502@gmail.com",
+          "authorLogin": "minirang",
+          "authorName": "\uc11c\uc6b8\ubbfc\ud2b8\ucd08\ucf54",
+          "committedDate": "2026-08-21T12:56:44Z",
+          "oid": "044c8c77e13665a964339dd6efaef4013469445c",
+          "prAuthorLogin": "minirang",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T12:56:45Z",
+          "prNumber": 12769,
+          "prUrl": "https://github.com/whatwg/html/pull/12769"
         },
         "044e4e3838bda154a6e6188667cefcfb81d7d64b": {
           "authorEmail": "philipj@opera.com",
@@ -88475,6 +88514,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "25f1766848291832c231954a97b092c00f5aac0c": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-20T09:26:01Z",
+          "oid": "25f1766848291832c231954a97b092c00f5aac0c",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T09:26:01Z",
+          "prNumber": 12801,
+          "prUrl": "https://github.com/whatwg/html/pull/12801"
+        },
         "25f2696175f3cee445bbd9debfcebdae11494208": {
           "authorEmail": "jmdyck@ibiblio.org",
           "authorLogin": "jmdyck",
@@ -95117,6 +95169,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "2ff023fbe4306f79bca8ef3aec27473455d2e190": {
+          "authorEmail": "philip@foolip.org",
+          "authorLogin": "foolip",
+          "authorName": "Philip J\u00e4genstedt",
+          "committedDate": "2026-08-20T06:30:50Z",
+          "oid": "2ff023fbe4306f79bca8ef3aec27473455d2e190",
+          "prAuthorLogin": "foolip",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T06:30:51Z",
+          "prNumber": 11818,
+          "prUrl": "https://github.com/whatwg/html/pull/11818"
         },
         "2ff2437c47e0c014e861e1d209c78642da560ffa": {
           "authorEmail": "jarhar@chromium.org",
@@ -105674,6 +105739,19 @@
           "prNumber": 287,
           "prUrl": "https://github.com/whatwg/html/pull/287"
         },
+        "40814ebfef1506a621a4af1ebd7e80c048cc396e": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-08-18T12:44:36Z",
+          "oid": "40814ebfef1506a621a4af1ebd7e80c048cc396e",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-18T12:44:37Z",
+          "prNumber": 12794,
+          "prUrl": "https://github.com/whatwg/html/pull/12794"
+        },
         "4081e3c15b9071ea8a8e169baf4287679378d912": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -109183,6 +109261,19 @@
           "prMergedAt": "2018-10-08T07:35:14Z",
           "prNumber": 3891,
           "prUrl": "https://github.com/whatwg/html/pull/3891"
+        },
+        "45e07d5363ab8c3c15261c01725cecd9256ba7bc": {
+          "authorEmail": "shannon.ml.booth@gmail.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-08-21T12:34:26Z",
+          "oid": "45e07d5363ab8c3c15261c01725cecd9256ba7bc",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T12:34:27Z",
+          "prNumber": 12785,
+          "prUrl": "https://github.com/whatwg/html/pull/12785"
         },
         "45e1472d46bb0cd73d7f7939e9ebf4b706b98c27": {
           "authorEmail": "ian@hixie.ch",
@@ -115905,6 +115996,19 @@
           "prNumber": 12266,
           "prUrl": "https://github.com/whatwg/html/pull/12266"
         },
+        "508a037333d8a1806504303aeb489d931fabbef6": {
+          "authorEmail": "yoav.weiss@shopify.com",
+          "authorLogin": "yoavweiss",
+          "authorName": "Yoav Weiss",
+          "committedDate": "2026-08-21T13:09:23Z",
+          "oid": "508a037333d8a1806504303aeb489d931fabbef6",
+          "prAuthorLogin": "yoavweiss",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T13:09:23Z",
+          "prNumber": 12725,
+          "prUrl": "https://github.com/whatwg/html/pull/12725"
+        },
         "508b86193696e1ef9a2488e9db08c060fde740eb": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -119766,6 +119870,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "56335688c9eca4959981fcbda2113a7d82b94270": {
+          "authorEmail": "35911232+shannonbooth@users.noreply.github.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-08-20T07:42:41Z",
+          "oid": "56335688c9eca4959981fcbda2113a7d82b94270",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T07:42:43Z",
+          "prNumber": 12391,
+          "prUrl": "https://github.com/whatwg/html/pull/12391"
+        },
         "5637ec7119a533a44524ca189a2353b7334af772": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -120572,6 +120689,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "57811ef0dca48568665d65eafd827764e9e454a2": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-20T08:42:33Z",
+          "oid": "57811ef0dca48568665d65eafd827764e9e454a2",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T08:42:34Z",
+          "prNumber": 12709,
+          "prUrl": "https://github.com/whatwg/html/pull/12709"
+        },
         "5784595161d581aa8e191953850e0b9deb95ecf9": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -121299,6 +121429,19 @@
           "prMergedAt": "2020-01-06T19:59:28Z",
           "prNumber": 5174,
           "prUrl": "https://github.com/whatwg/html/pull/5174"
+        },
+        "58eecd01b9a2e8fa1cbaffc888305ba4f7dcfb2e": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-20T16:19:28Z",
+          "oid": "58eecd01b9a2e8fa1cbaffc888305ba4f7dcfb2e",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T16:19:29Z",
+          "prNumber": 12703,
+          "prUrl": "https://github.com/whatwg/html/pull/12703"
         },
         "58ef4be2142c00943d5715aa2b16db26859c3db6": {
           "authorEmail": "ian@hixie.ch",
@@ -129619,6 +129762,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "6543b51274ce6e6acb8942967a442339422f6076": {
+          "authorEmail": "emilio@crisal.io",
+          "authorLogin": "emilio",
+          "authorName": "Emilio Cobos \u00c1lvarez",
+          "committedDate": "2026-08-21T10:34:30Z",
+          "oid": "6543b51274ce6e6acb8942967a442339422f6076",
+          "prAuthorLogin": "emilio",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T10:34:30Z",
+          "prNumber": 12781,
+          "prUrl": "https://github.com/whatwg/html/pull/12781"
         },
         "6544aba8b6f001f34c42315928cf3857a2fee2d9": {
           "authorEmail": "ian@hixie.ch",
@@ -143049,6 +143205,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "79c9e06136192389f8a4d5ee943f7d89d0271ec7": {
+          "authorEmail": "35911232+shannonbooth@users.noreply.github.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-08-21T09:43:46Z",
+          "oid": "79c9e06136192389f8a4d5ee943f7d89d0271ec7",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T09:43:46Z",
+          "prNumber": 12792,
+          "prUrl": "https://github.com/whatwg/html/pull/12792"
+        },
         "79cb339cf3025928a2d3adbf63410541ae759fd8": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -155879,6 +156048,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "8d1493253bd3f35fda592778fa1e213299849cb0": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-20T08:30:12Z",
+          "oid": "8d1493253bd3f35fda592778fa1e213299849cb0",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T08:30:12Z",
+          "prNumber": 12708,
+          "prUrl": "https://github.com/whatwg/html/pull/12708"
         },
         "8d172aaf98c8ce8b9a8fc843d335290136bd7458": {
           "authorEmail": "ian@hixie.ch",
@@ -171714,6 +171896,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "a502b71833fa665e0a8fb5e2a77094ffadeab0bf": {
+          "authorEmail": "shannon.ml.booth@gmail.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-08-20T07:30:29Z",
+          "oid": "a502b71833fa665e0a8fb5e2a77094ffadeab0bf",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-20T07:30:30Z",
+          "prNumber": 12127,
+          "prUrl": "https://github.com/whatwg/html/pull/12127"
+        },
         "a503b1b8de5a8f9fe204541bad17040fe176d717": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -174339,6 +174534,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "a95983cf5eed71e8984898061e538232a0f56869": {
+          "authorEmail": "lwarlow@igalia.com",
+          "authorLogin": "lukewarlow",
+          "authorName": "Luke Warlow",
+          "committedDate": "2026-08-21T12:36:12Z",
+          "oid": "a95983cf5eed71e8984898061e538232a0f56869",
+          "prAuthorLogin": "lukewarlow",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T12:36:13Z",
+          "prNumber": 12762,
+          "prUrl": "https://github.com/whatwg/html/pull/12762"
         },
         "a95d026cd8ed9941fdc3106cd41b5eb59363adec": {
           "authorEmail": "ian@hixie.ch",
@@ -184285,6 +184493,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "b9c11c551367cf958d50b82e3eff9c6c5d887f5c": {
+          "authorEmail": "35911232+shannonbooth@users.noreply.github.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-08-21T10:00:54Z",
+          "oid": "b9c11c551367cf958d50b82e3eff9c6c5d887f5c",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T10:00:55Z",
+          "prNumber": 12666,
+          "prUrl": "https://github.com/whatwg/html/pull/12666"
+        },
         "b9c1c116bec4c8084af2338ec79144b3adfe671a": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -192786,6 +193007,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "c75bb9d1cb60a6ea817e8013ebbc9abbf4e54eb6": {
+          "authorEmail": "64767361+Hashim1999164@users.noreply.github.com",
+          "authorLogin": "hashim1999164",
+          "authorName": "Hashim Khan",
+          "committedDate": "2026-08-21T12:41:13Z",
+          "oid": "c75bb9d1cb60a6ea817e8013ebbc9abbf4e54eb6",
+          "prAuthorLogin": "hashim1999164",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T12:41:13Z",
+          "prNumber": 12723,
+          "prUrl": "https://github.com/whatwg/html/pull/12723"
         },
         "c75d253fdda250b8a032004dc570c12596c7657e": {
           "authorEmail": "ian@hixie.ch",
@@ -229214,9 +229448,9 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:50Z",
+      "fetchedAt": "2026-08-24T05:00:15Z",
       "repo": "whatwg/html",
-      "totalCount": 12666
+      "totalCount": 12682
     },
     "whatwg/infra@main": {
       "branch": "main",
@@ -231887,7 +232121,7 @@
           "prUrl": "https://github.com/whatwg/infra/pull/659"
         }
       },
-      "fetchedAt": "2026-08-17T04:56:53Z",
+      "fetchedAt": "2026-08-24T05:00:18Z",
       "repo": "whatwg/infra",
       "totalCount": 205
     },
@@ -236731,7 +236965,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:55Z",
+      "fetchedAt": "2026-08-24T05:00:20Z",
       "repo": "whatwg/mimesniff",
       "totalCount": 372
     },
@@ -239781,7 +240015,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:57Z",
+      "fetchedAt": "2026-08-24T05:00:22Z",
       "repo": "whatwg/notifications",
       "totalCount": 234
     },
@@ -241830,7 +242064,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:56:58Z",
+      "fetchedAt": "2026-08-24T05:00:24Z",
       "repo": "whatwg/quirks",
       "totalCount": 157
     },
@@ -243229,7 +243463,7 @@
           "prUrl": "https://github.com/whatwg/storage/pull/64"
         }
       },
-      "fetchedAt": "2026-08-17T04:57:02Z",
+      "fetchedAt": "2026-08-24T05:00:31Z",
       "repo": "whatwg/storage",
       "totalCount": 107
     },
@@ -253350,6 +253584,19 @@
           "prNumber": 399,
           "prUrl": "https://github.com/whatwg/streams/pull/399"
         },
+        "b9ba9f49d95b4280be0dc2372377a006c3a91c18": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-18T11:17:34Z",
+          "oid": "b9ba9f49d95b4280be0dc2372377a006c3a91c18",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-18T11:17:35Z",
+          "prNumber": 1377,
+          "prUrl": "https://github.com/whatwg/streams/pull/1377"
+        },
         "ba09bc486bf9cff0b2e8594b3bcb86351ac08677": {
           "authorEmail": "tyoshino@chromium.org",
           "authorLogin": "",
@@ -256991,9 +257238,9 @@
           "prUrl": "https://github.com/whatwg/streams/pull/710"
         }
       },
-      "fetchedAt": "2026-08-17T04:57:06Z",
+      "fetchedAt": "2026-08-24T05:00:37Z",
       "repo": "whatwg/streams",
-      "totalCount": 1058
+      "totalCount": 1059
     },
     "whatwg/testutils@main": {
       "branch": "main",
@@ -257194,7 +257441,7 @@
           "prUrl": "https://github.com/whatwg/testutils/pull/13"
         }
       },
-      "fetchedAt": "2026-08-17T04:57:07Z",
+      "fetchedAt": "2026-08-24T05:00:38Z",
       "repo": "whatwg/testutils",
       "totalCount": 15
     },
@@ -260372,6 +260619,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "55d6699373ba68a16ec182f34222a74ed8bc3dac": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-18T11:17:15Z",
+          "oid": "55d6699373ba68a16ec182f34222a74ed8bc3dac",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-18T11:17:15Z",
+          "prNumber": 928,
+          "prUrl": "https://github.com/whatwg/url/pull/928"
         },
         "56b74ce7cca8883eab62e9a12666e2fac665d03d": {
           "authorEmail": "annevk@annevk.nl",
@@ -266419,9 +266679,9 @@
           "prUrl": "https://github.com/whatwg/url/pull/780"
         }
       },
-      "fetchedAt": "2026-08-17T04:57:08Z",
+      "fetchedAt": "2026-08-24T05:00:43Z",
       "repo": "whatwg/url",
-      "totalCount": 709
+      "totalCount": 710
     },
     "whatwg/urlpattern@main": {
       "branch": "main",
@@ -269274,7 +269534,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:57:10Z",
+      "fetchedAt": "2026-08-24T05:00:45Z",
       "repo": "whatwg/urlpattern",
       "totalCount": 219
     },
@@ -274714,6 +274974,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "3c82f9338c19c3a8cdca2c8d1246fd6f235f9c84": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-21T14:18:36Z",
+          "oid": "3c82f9338c19c3a8cdca2c8d1246fd6f235f9c84",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-21T14:18:37Z",
+          "prNumber": 1630,
+          "prUrl": "https://github.com/whatwg/webidl/pull/1630"
         },
         "3cecb3426080e0957d1ab53690f1e373ccebb04b": {
           "authorEmail": "cam@mcc.id.au",
@@ -292318,9 +292591,9 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:57:13Z",
+      "fetchedAt": "2026-08-24T05:00:50Z",
       "repo": "whatwg/webidl",
-      "totalCount": 1772
+      "totalCount": 1773
     },
     "whatwg/websockets@main": {
       "branch": "main",
@@ -292703,7 +292976,7 @@
           "prUrl": "https://github.com/whatwg/websockets/pull/5"
         }
       },
-      "fetchedAt": "2026-08-17T04:56:51Z",
+      "fetchedAt": "2026-08-24T05:00:16Z",
       "repo": "whatwg/websockets",
       "totalCount": 29
     },
@@ -296428,6 +296701,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "c3476b46f024cfc988f47d8d82118f3bcba562e9": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-18T11:14:44Z",
+          "oid": "c3476b46f024cfc988f47d8d82118f3bcba562e9",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-18T11:14:44Z",
+          "prNumber": 408,
+          "prUrl": "https://github.com/whatwg/xhr/pull/408"
+        },
         "c3c838b7bef96e43606cb866a4905c55f9d3dbc2": {
           "authorEmail": "annevk@annevk.nl",
           "authorLogin": "annevk",
@@ -297794,9 +298080,9 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-17T04:57:15Z",
+      "fetchedAt": "2026-08-24T05:00:54Z",
       "repo": "whatwg/xhr",
-      "totalCount": 391
+      "totalCount": 392
     }
   },
   "version": 2
