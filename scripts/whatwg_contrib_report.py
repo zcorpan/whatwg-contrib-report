@@ -1168,7 +1168,7 @@ summary { cursor: pointer; font-weight: 600; }
         "</div>",
     ]
     if warnings:
-        parts.append("<details open><summary>Warnings</summary>")
+        parts.append(f"<details><summary>Warnings ({len(warnings)})</summary>")
         for warning in warnings:
             parts.append(f'<div class="warning"><strong>{escape(warning.get("area", "warning"))}</strong>: {escape(warning.get("message", ""))}</div>')
         parts.append("</details>")
