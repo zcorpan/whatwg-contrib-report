@@ -2890,7 +2890,7 @@
           "prUrl": "https://github.com/whatwg/compat/pull/198"
         }
       },
-      "fetchedAt": "2026-08-24T04:59:54Z",
+      "fetchedAt": "2026-09-07T14:54:07Z",
       "repo": "whatwg/compat",
       "totalCount": 222
     },
@@ -4848,7 +4848,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:33Z",
+      "fetchedAt": "2026-09-07T14:54:53Z",
       "repo": "whatwg/compression",
       "totalCount": 150
     },
@@ -6741,7 +6741,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T04:59:56Z",
+      "fetchedAt": "2026-09-07T14:54:09Z",
       "repo": "whatwg/console",
       "totalCount": 145
     },
@@ -11598,7 +11598,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:04Z",
+      "fetchedAt": "2026-09-07T14:54:18Z",
       "repo": "whatwg/cookiestore",
       "totalCount": 373
     },
@@ -27816,6 +27816,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "a2331a45360129e8645ef7e0a04740241b6e3726": {
+          "authorEmail": "masonf@chromium.org",
+          "authorLogin": "mfreed7",
+          "authorName": "Mason Freed",
+          "committedDate": "2026-08-25T06:07:15Z",
+          "oid": "a2331a45360129e8645ef7e0a04740241b6e3726",
+          "prAuthorLogin": "mfreed7",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-25T06:07:15Z",
+          "prNumber": 1499,
+          "prUrl": "https://github.com/whatwg/dom/pull/1499"
+        },
         "a237ba9e5b6ae8d01b16813a161733f795fde26f": {
           "authorEmail": "ms2ger@gmail.com",
           "authorLogin": "ms2ger",
@@ -37346,9 +37359,9 @@
           "prUrl": "https://github.com/whatwg/dom/pull/971"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:00Z",
+      "fetchedAt": "2026-09-07T14:54:14Z",
       "repo": "whatwg/dom",
-      "totalCount": 1980
+      "totalCount": 1981
     },
     "whatwg/encoding@main": {
       "branch": "main",
@@ -43984,7 +43997,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:02Z",
+      "fetchedAt": "2026-09-07T14:54:16Z",
       "repo": "whatwg/encoding",
       "totalCount": 510
     },
@@ -47254,6 +47267,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "394d20d144ed1401c2c0e02c35bc3608cb2a2269": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-02T14:22:21Z",
+          "oid": "394d20d144ed1401c2c0e02c35bc3608cb2a2269",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-02T14:22:22Z",
+          "prNumber": 1957,
+          "prUrl": "https://github.com/whatwg/fetch/pull/1957"
+        },
         "39796f723568e73fdd5c5ac481b2178063a47b00": {
           "authorEmail": "annevk@opera.com",
           "authorLogin": "annevk",
@@ -49515,6 +49541,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "6089fa1b3680b50def3f120c0f047864e6052d74": {
+          "authorEmail": "35911232+shannonbooth@users.noreply.github.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-09-01T14:41:54Z",
+          "oid": "6089fa1b3680b50def3f120c0f047864e6052d74",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-01T14:41:55Z",
+          "prNumber": 1955,
+          "prUrl": "https://github.com/whatwg/fetch/pull/1955"
         },
         "60a516da3c3c023da74a151d0970fdcb4735d94e": {
           "authorEmail": "annevk@annevk.nl",
@@ -52869,6 +52908,19 @@
           "prMergedAt": "2023-01-03T07:41:06Z",
           "prNumber": 1581,
           "prUrl": "https://github.com/whatwg/fetch/pull/1581"
+        },
+        "98d3facb1345b5bed4ac6813f67f0f489f33047f": {
+          "authorEmail": "35911232+shannonbooth@users.noreply.github.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-08-31T06:20:08Z",
+          "oid": "98d3facb1345b5bed4ac6813f67f0f489f33047f",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-31T06:20:08Z",
+          "prNumber": 1956,
+          "prUrl": "https://github.com/whatwg/fetch/pull/1956"
         },
         "98f23db8a775e430d5fde58e266921bf416cf410": {
           "authorEmail": "annevk@annevk.nl",
@@ -57537,6 +57589,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "f1aff91b8bb3a0d3b38006c9d87119037aae766f": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-08-25T06:36:13Z",
+          "oid": "f1aff91b8bb3a0d3b38006c9d87119037aae766f",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-25T06:36:13Z",
+          "prNumber": 1953,
+          "prUrl": "https://github.com/whatwg/fetch/pull/1953"
+        },
         "f23e194f13c3c7dccef6e5eabc224b4bcd575a31": {
           "authorEmail": "annevk@annevk.nl",
           "authorLogin": "annevk",
@@ -58175,9 +58240,9 @@
           "prUrl": "https://github.com/whatwg/fetch/pull/742"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:09Z",
+      "fetchedAt": "2026-09-07T14:54:25Z",
       "repo": "whatwg/fetch",
-      "totalCount": 1091
+      "totalCount": 1095
     },
     "whatwg/fs@main": {
       "branch": "main",
@@ -61030,7 +61095,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:27Z",
+      "fetchedAt": "2026-09-07T14:54:48Z",
       "repo": "whatwg/fs",
       "totalCount": 219
     },
@@ -64574,7 +64639,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:11Z",
+      "fetchedAt": "2026-09-07T14:54:27Z",
       "repo": "whatwg/fullscreen",
       "totalCount": 272
     },
@@ -72043,6 +72108,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "0b51f73766465eccf3752be57470b4ef7e81add9": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-02T13:43:09Z",
+          "oid": "0b51f73766465eccf3752be57470b4ef7e81add9",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-02T13:43:09Z",
+          "prNumber": 12881,
+          "prUrl": "https://github.com/whatwg/html/pull/12881"
+        },
         "0b55728b20b2078bd672589643a90cf786d1a3f5": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -74877,6 +74955,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "100b354e67829809ffc7a966b326731b9a2e784e": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-04T09:56:32Z",
+          "oid": "100b354e67829809ffc7a966b326731b9a2e784e",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-04T09:56:32Z",
+          "prNumber": 12840,
+          "prUrl": "https://github.com/whatwg/html/pull/12840"
+        },
         "10133f490a3efdac603a9d761d623597a7dfb156": {
           "authorEmail": "dbaron@dbaron.org",
           "authorLogin": "dbaron",
@@ -77008,6 +77099,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "1379cdd841fcd5368aabea3f8e34b2d76a57f852": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-03T10:24:40Z",
+          "oid": "1379cdd841fcd5368aabea3f8e34b2d76a57f852",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-03T10:24:41Z",
+          "prNumber": 12891,
+          "prUrl": "https://github.com/whatwg/html/pull/12891"
         },
         "137d9bf6cef3df1aa5c86bf81261f18907b18d1e": {
           "authorEmail": "ian@hixie.ch",
@@ -79283,6 +79387,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "1761c0e7c60a9672cf30955dc30d482ed0a84f74": {
+          "authorEmail": "TimvdLippe@users.noreply.github.com",
+          "authorLogin": "timvdlippe",
+          "authorName": "Tim van der Lippe",
+          "committedDate": "2026-09-07T08:54:50Z",
+          "oid": "1761c0e7c60a9672cf30955dc30d482ed0a84f74",
+          "prAuthorLogin": "timvdlippe",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T08:54:50Z",
+          "prNumber": 12630,
+          "prUrl": "https://github.com/whatwg/html/pull/12630"
         },
         "176a9f558be5875730246365e6b0acc6820d5a59": {
           "authorEmail": "ian@hixie.ch",
@@ -84874,6 +84991,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "208004fb0c299e2d2a24e973ec7bd35bc888add9": {
+          "authorEmail": "masonf@chromium.org",
+          "authorLogin": "mfreed7",
+          "authorName": "Mason Freed",
+          "committedDate": "2026-08-25T15:11:13Z",
+          "oid": "208004fb0c299e2d2a24e973ec7bd35bc888add9",
+          "prAuthorLogin": "mfreed7",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-25T15:11:14Z",
+          "prNumber": 12805,
+          "prUrl": "https://github.com/whatwg/html/pull/12805"
+        },
         "2083b0053a059f692a0a95547ba9b6bd0c511094": {
           "authorEmail": "mike@mikewest.org",
           "authorLogin": "mikewest",
@@ -86030,6 +86160,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "224e47e4184cc9c29715ad8b11f9e59355f2a004": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-24T14:25:03Z",
+          "oid": "224e47e4184cc9c29715ad8b11f9e59355f2a004",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-24T14:25:04Z",
+          "prNumber": 12823,
+          "prUrl": "https://github.com/whatwg/html/pull/12823"
         },
         "2256b1821a4383145efaaf8d863ec59e29bc4e85": {
           "authorEmail": "ian@hixie.ch",
@@ -110354,6 +110497,19 @@
           "prNumber": 9217,
           "prUrl": "https://github.com/whatwg/html/pull/9217"
         },
+        "47dd90e5c7dd6e17065a73071cb8f9eadfa82099": {
+          "authorEmail": "zcorpan@gmail.com",
+          "authorLogin": "zcorpan",
+          "authorName": "Simon Pieters",
+          "committedDate": "2026-09-07T09:04:51Z",
+          "oid": "47dd90e5c7dd6e17065a73071cb8f9eadfa82099",
+          "prAuthorLogin": "zcorpan",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T09:04:52Z",
+          "prNumber": 12904,
+          "prUrl": "https://github.com/whatwg/html/pull/12904"
+        },
         "47deceb8955731c19938fd4d7f88e6ca1d5ef22a": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -112030,6 +112186,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "4aa7694b585e4d551a11cfe6dece823105fdf0a8": {
+          "authorEmail": "jarhar@chromium.org",
+          "authorLogin": "josepharhar",
+          "authorName": "Joey Arhar",
+          "committedDate": "2026-08-28T06:43:09Z",
+          "oid": "4aa7694b585e4d551a11cfe6dece823105fdf0a8",
+          "prAuthorLogin": "josepharhar",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-28T06:43:09Z",
+          "prNumber": 12733,
+          "prUrl": "https://github.com/whatwg/html/pull/12733"
         },
         "4aaacb7252e2b85d9292e4c1cc4c973d6d1cbdd2": {
           "authorEmail": "annevk@annevk.nl",
@@ -114279,6 +114448,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "4de8d68bf2538061ccee17f2dacbcced9d8ad3e7": {
+          "authorEmail": "30862698+otherdaniel@users.noreply.github.com",
+          "authorLogin": "otherdaniel",
+          "authorName": "Daniel Vogelheim",
+          "committedDate": "2026-09-01T14:11:17Z",
+          "oid": "4de8d68bf2538061ccee17f2dacbcced9d8ad3e7",
+          "prAuthorLogin": "otherdaniel",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-01T14:11:18Z",
+          "prNumber": 11799,
+          "prUrl": "https://github.com/whatwg/html/pull/11799"
         },
         "4ded33a799726a65c18615e0c5199fbb35de3961": {
           "authorEmail": "ian@hixie.ch",
@@ -128450,6 +128632,19 @@
           "prNumber": 4860,
           "prUrl": "https://github.com/whatwg/html/pull/4860"
         },
+        "635c780a768afcc0e30fd2fd13dcb34560f5ee8f": {
+          "authorEmail": "zcorpan@gmail.com",
+          "authorLogin": "zcorpan",
+          "authorName": "Simon Pieters",
+          "committedDate": "2026-09-04T08:16:57Z",
+          "oid": "635c780a768afcc0e30fd2fd13dcb34560f5ee8f",
+          "prAuthorLogin": "zcorpan",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-04T08:16:58Z",
+          "prNumber": 12876,
+          "prUrl": "https://github.com/whatwg/html/pull/12876"
+        },
         "6362b56aafeed7027ad9cbfdeb7475c5d7ac3800": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -128540,6 +128735,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "6388eae41d7117b791a117a115653725348b15ba": {
+          "authorEmail": "lwarlow@igalia.com",
+          "authorLogin": "lukewarlow",
+          "authorName": "Luke Warlow",
+          "committedDate": "2026-09-07T08:02:21Z",
+          "oid": "6388eae41d7117b791a117a115653725348b15ba",
+          "prAuthorLogin": "lukewarlow",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T08:02:22Z",
+          "prNumber": 12880,
+          "prUrl": "https://github.com/whatwg/html/pull/12880"
         },
         "638e2b9683397050f3e57b3d3089c3ff5efa4221": {
           "authorEmail": "ian@hixie.ch",
@@ -129320,6 +129528,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "64b40967d74792ffbfa18ec431074e060412f557": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-26T13:38:31Z",
+          "oid": "64b40967d74792ffbfa18ec431074e060412f557",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-26T13:38:32Z",
+          "prNumber": 12845,
+          "prUrl": "https://github.com/whatwg/html/pull/12845"
         },
         "64b7ade75c126c611a97f402ac21c2b01596a203": {
           "authorEmail": "ian@hixie.ch",
@@ -132831,6 +133052,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "6a6ee7a805680239810d540788f30b500e41c96d": {
+          "authorEmail": "Ms2ger@igalia.com",
+          "authorLogin": "ms2ger",
+          "authorName": "Ms2ger",
+          "committedDate": "2026-09-03T15:37:30Z",
+          "oid": "6a6ee7a805680239810d540788f30b500e41c96d",
+          "prAuthorLogin": "ms2ger",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-03T15:37:30Z",
+          "prNumber": 12899,
+          "prUrl": "https://github.com/whatwg/html/pull/12899"
+        },
         "6a71cae2d00aabfe73588fd01df005e3658fc034": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -133298,6 +133532,19 @@
           "prMergedAt": "2021-11-02T14:50:36Z",
           "prNumber": 7284,
           "prUrl": "https://github.com/whatwg/html/pull/7284"
+        },
+        "6b2778f14ad5f58ae938659bc5c470787d0f5a9b": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-24T14:25:03Z",
+          "oid": "6b2778f14ad5f58ae938659bc5c470787d0f5a9b",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-24T14:25:04Z",
+          "prNumber": 12823,
+          "prUrl": "https://github.com/whatwg/html/pull/12823"
         },
         "6b2b2e893dceea264aee2690f6c2194262cd9b53": {
           "authorEmail": "xiaochengh@chromium.org",
@@ -141450,6 +141697,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "778afd942c67b78335a4becc28c1c725a25d1cab": {
+          "authorEmail": "jmdyck@ibiblio.org",
+          "authorLogin": "jmdyck",
+          "authorName": "jmdyck",
+          "committedDate": "2026-08-30T06:51:52Z",
+          "oid": "778afd942c67b78335a4becc28c1c725a25d1cab",
+          "prAuthorLogin": "jmdyck",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-30T06:51:52Z",
+          "prNumber": 12862,
+          "prUrl": "https://github.com/whatwg/html/pull/12862"
+        },
         "778f3b4a021a4a3427e5e06e137418173f699144": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -146156,6 +146416,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "7e501a905299d52717f28425548d35db98bf822e": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-01T12:33:27Z",
+          "oid": "7e501a905299d52717f28425548d35db98bf822e",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-01T12:33:28Z",
+          "prNumber": 12870,
+          "prUrl": "https://github.com/whatwg/html/pull/12870"
+        },
         "7e5391de5c69cccbc932c16aeae3578a2d87f938": {
           "authorEmail": "d@domenic.me",
           "authorLogin": "domenic",
@@ -149809,6 +150082,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "83c0aa8c0a2e837847bb8dcd66c297cf6f69c499": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-07T13:18:56Z",
+          "oid": "83c0aa8c0a2e837847bb8dcd66c297cf6f69c499",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T13:18:57Z",
+          "prNumber": 12908,
+          "prUrl": "https://github.com/whatwg/html/pull/12908"
+        },
         "83c68897378558b30d7d07cdc41fc95c0ca05397": {
           "authorEmail": "zcorpan@gmail.com",
           "authorLogin": "zcorpan",
@@ -150367,6 +150653,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "849de3b965bb5a2bae909c102eaa0590a41812f2": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-08-26T14:34:08Z",
+          "oid": "849de3b965bb5a2bae909c102eaa0590a41812f2",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-26T14:34:09Z",
+          "prNumber": 12848,
+          "prUrl": "https://github.com/whatwg/html/pull/12848"
         },
         "84a2b22ae1912ae0358d26be95d8be55c4358b8a": {
           "authorEmail": "zcorpan@gmail.com",
@@ -153722,6 +154021,19 @@
           "prNumber": 4277,
           "prUrl": "https://github.com/whatwg/html/pull/4277"
         },
+        "89ea86e398b5ec5b3a3465009b6eecd7dc5421ed": {
+          "authorEmail": "zcorpan@gmail.com",
+          "authorLogin": "zcorpan",
+          "authorName": "Simon Pieters",
+          "committedDate": "2026-09-07T09:03:35Z",
+          "oid": "89ea86e398b5ec5b3a3465009b6eecd7dc5421ed",
+          "prAuthorLogin": "zcorpan",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T09:03:35Z",
+          "prNumber": 12905,
+          "prUrl": "https://github.com/whatwg/html/pull/12905"
+        },
         "89f11631456580b72b781e2a67807deab3e3b85e": {
           "authorEmail": "nribaudo@igalia.com",
           "authorLogin": "nicolo-ribaudo",
@@ -154307,6 +154619,19 @@
           "prNumber": 10674,
           "prUrl": "https://github.com/whatwg/html/pull/10674"
         },
+        "8a9acc4ce2473cc1dd2401e580a9dffc4d7dac5d": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-03T13:20:34Z",
+          "oid": "8a9acc4ce2473cc1dd2401e580a9dffc4d7dac5d",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-03T13:20:35Z",
+          "prNumber": 12888,
+          "prUrl": "https://github.com/whatwg/html/pull/12888"
+        },
         "8a9b1b62576537f2aa1269600c573e04bf38f6ea": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -154475,6 +154800,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "8ad51e24e9d9e48d92317467f434f7192df9d63d": {
+          "authorEmail": "jmdyck@ibiblio.org",
+          "authorLogin": "jmdyck",
+          "authorName": "jmdyck",
+          "committedDate": "2026-08-27T13:50:27Z",
+          "oid": "8ad51e24e9d9e48d92317467f434f7192df9d63d",
+          "prAuthorLogin": "jmdyck",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-27T13:50:28Z",
+          "prNumber": 12852,
+          "prUrl": "https://github.com/whatwg/html/pull/12852"
         },
         "8adc0bfc15a90a9556477683d4c7b482aa1cfa0b": {
           "authorEmail": "ian@hixie.ch",
@@ -167892,6 +168230,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "9ead9de8f6751ccb98e91972e580ed6e3314c64a": {
+          "authorEmail": "kschmi@microsoft.com",
+          "authorLogin": "kurtcattischmidt",
+          "authorName": "Kurt Catti-Schmidt",
+          "committedDate": "2026-08-27T06:31:04Z",
+          "oid": "9ead9de8f6751ccb98e91972e580ed6e3314c64a",
+          "prAuthorLogin": "kurtcattischmidt",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-27T06:31:05Z",
+          "prNumber": 12849,
+          "prUrl": "https://github.com/whatwg/html/pull/12849"
+        },
         "9eb3fd05e62c5c9b6d437b63cc46b9a7dbe832fd": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -167969,6 +168320,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "9ed7f27762e6e34622bcca9ebc93cedd1c996e99": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-07T13:23:06Z",
+          "oid": "9ed7f27762e6e34622bcca9ebc93cedd1c996e99",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T13:23:07Z",
+          "prNumber": 12911,
+          "prUrl": "https://github.com/whatwg/html/pull/12911"
         },
         "9ed8d28f6d20a1173d9b01d07933ee9d9312ecec": {
           "authorEmail": "ian@hixie.ch",
@@ -170582,6 +170946,19 @@
           "prMergedAt": "2020-11-04T18:08:06Z",
           "prNumber": 6123,
           "prUrl": "https://github.com/whatwg/html/pull/6123"
+        },
+        "a2d61eccfd9751e2f64a94eed280a57fa6d48be7": {
+          "authorEmail": "35911232+shannonbooth@users.noreply.github.com",
+          "authorLogin": "shannonbooth",
+          "authorName": "Shannon Booth",
+          "committedDate": "2026-08-25T08:47:12Z",
+          "oid": "a2d61eccfd9751e2f64a94eed280a57fa6d48be7",
+          "prAuthorLogin": "shannonbooth",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-25T08:47:12Z",
+          "prNumber": 12421,
+          "prUrl": "https://github.com/whatwg/html/pull/12421"
         },
         "a2dbcf711ade17cb9c55b58f8104347bbec4d1b7": {
           "authorEmail": "ian@hixie.ch",
@@ -177538,6 +177915,19 @@
           "prNumber": 3970,
           "prUrl": "https://github.com/whatwg/html/pull/3970"
         },
+        "ae6c5d8ddfe6c819730f8f766d550dd1417e66c9": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-26T08:40:31Z",
+          "oid": "ae6c5d8ddfe6c819730f8f766d550dd1417e66c9",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-26T08:40:32Z",
+          "prNumber": 12844,
+          "prUrl": "https://github.com/whatwg/html/pull/12844"
+        },
         "ae6d3656b8423840f24dbae319252424ad48c5a4": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -178773,6 +179163,19 @@
           "prNumber": 1056,
           "prUrl": "https://github.com/whatwg/html/pull/1056"
         },
+        "b028c9e2e5db68f4b723b0cfb96a9d6126431b6c": {
+          "authorEmail": "Ms2ger@igalia.com",
+          "authorLogin": "ms2ger",
+          "authorName": "Ms2ger",
+          "committedDate": "2026-09-07T07:57:16Z",
+          "oid": "b028c9e2e5db68f4b723b0cfb96a9d6126431b6c",
+          "prAuthorLogin": "ms2ger",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T07:57:16Z",
+          "prNumber": 12889,
+          "prUrl": "https://github.com/whatwg/html/pull/12889"
+        },
         "b03faf8d7ed3bd44b1d65c17cf330f2177ef4fe7": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -179565,6 +179968,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "b17ff2b34196c3d4da46de6a5ac57ac19f3fe891": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-08-26T14:39:48Z",
+          "oid": "b17ff2b34196c3d4da46de6a5ac57ac19f3fe891",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-26T14:39:48Z",
+          "prNumber": 12831,
+          "prUrl": "https://github.com/whatwg/html/pull/12831"
         },
         "b18d9e459eda06c00e3d8215d79de7b7c8ec0d45": {
           "authorEmail": "ian@hixie.ch",
@@ -191214,6 +191630,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "c46c0c7a362e46b49f087957b6eb071ad253f8ed": {
+          "authorEmail": "Ms2ger@igalia.com",
+          "authorLogin": "ms2ger",
+          "authorName": "Ms2ger",
+          "committedDate": "2026-08-31T13:50:31Z",
+          "oid": "c46c0c7a362e46b49f087957b6eb071ad253f8ed",
+          "prAuthorLogin": "ms2ger",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-31T13:50:31Z",
+          "prNumber": 12869,
+          "prUrl": "https://github.com/whatwg/html/pull/12869"
+        },
         "c474be0286af0f9782778efd9102120c4bd22f12": {
           "authorEmail": "d@domenic.me",
           "authorLogin": "domenic",
@@ -195022,6 +195451,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "ca693db19248e5617c1134ae5d5e7c6adc99f47f": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-26T05:13:14Z",
+          "oid": "ca693db19248e5617c1134ae5d5e7c6adc99f47f",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-26T05:13:14Z",
+          "prNumber": 12830,
+          "prUrl": "https://github.com/whatwg/html/pull/12830"
         },
         "ca6c1f0112ea11d1276ef68234e1fecf7a4566e8": {
           "authorEmail": "ian@hixie.ch",
@@ -202186,6 +202628,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "d57dd09ce7592f5c299c0b7d7c2257092525a3dd": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-02T14:30:33Z",
+          "oid": "d57dd09ce7592f5c299c0b7d7c2257092525a3dd",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-02T14:30:33Z",
+          "prNumber": 12886,
+          "prUrl": "https://github.com/whatwg/html/pull/12886"
+        },
         "d57e571f808f73ce5087d31a752bf0dda42cfec0": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -208348,6 +208803,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "df14ce3085887cc99d821d238c5192857904de58": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-08-26T18:51:28Z",
+          "oid": "df14ce3085887cc99d821d238c5192857904de58",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-26T18:51:28Z",
+          "prNumber": 12829,
+          "prUrl": "https://github.com/whatwg/html/pull/12829"
+        },
         "df16ff393210dde1abf7c22fd7660f0ec70c357e": {
           "authorEmail": "annevk@annevk.nl",
           "authorLogin": "annevk",
@@ -211974,6 +212442,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "e5071a20c8569d8a3ec02ed27dd01b948773f850": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-09-04T14:23:54Z",
+          "oid": "e5071a20c8569d8a3ec02ed27dd01b948773f850",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-04T14:23:54Z",
+          "prNumber": 12898,
+          "prUrl": "https://github.com/whatwg/html/pull/12898"
         },
         "e50adbff36ab8b4a82aba1cff8c26a9dc35ea7cc": {
           "authorEmail": "ian@hixie.ch",
@@ -219436,6 +219917,19 @@
           "prMergedAt": null,
           "prNumber": null,
           "prUrl": null
+        },
+        "f0e63b9f4df9b5c0e123ec4cf4375867cb0b4607": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-09-01T14:38:27Z",
+          "oid": "f0e63b9f4df9b5c0e123ec4cf4375867cb0b4607",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-01T14:38:28Z",
+          "prNumber": 12877,
+          "prUrl": "https://github.com/whatwg/html/pull/12877"
         },
         "f0f2720c976a4782355a398b54ba5672958f5478": {
           "authorEmail": "35911232+shannonbooth@users.noreply.github.com",
@@ -227497,6 +227991,19 @@
           "prNumber": 4579,
           "prUrl": "https://github.com/whatwg/html/pull/4579"
         },
+        "fd344c03ac1bda1a17f5bb06a9e2af1019f95dde": {
+          "authorEmail": "noamr@users.noreply.github.com",
+          "authorLogin": "noamr",
+          "authorName": "Noam Rosenthal",
+          "committedDate": "2026-09-07T13:36:15Z",
+          "oid": "fd344c03ac1bda1a17f5bb06a9e2af1019f95dde",
+          "prAuthorLogin": "noamr",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-09-07T13:36:15Z",
+          "prNumber": 12838,
+          "prUrl": "https://github.com/whatwg/html/pull/12838"
+        },
         "fd376b16b61bd1e6a82463f15c034a8ebac22a53": {
           "authorEmail": "ian@hixie.ch",
           "authorLogin": "hixie",
@@ -229448,9 +229955,9 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:15Z",
+      "fetchedAt": "2026-09-07T14:54:32Z",
       "repo": "whatwg/html",
-      "totalCount": 12682
+      "totalCount": 12716
     },
     "whatwg/infra@main": {
       "branch": "main",
@@ -232121,7 +232628,7 @@
           "prUrl": "https://github.com/whatwg/infra/pull/659"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:18Z",
+      "fetchedAt": "2026-09-07T14:54:35Z",
       "repo": "whatwg/infra",
       "totalCount": 205
     },
@@ -236965,7 +237472,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:20Z",
+      "fetchedAt": "2026-09-07T14:54:37Z",
       "repo": "whatwg/mimesniff",
       "totalCount": 372
     },
@@ -240015,7 +240522,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:22Z",
+      "fetchedAt": "2026-09-07T14:54:40Z",
       "repo": "whatwg/notifications",
       "totalCount": 234
     },
@@ -242064,9 +242571,1577 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:24Z",
+      "fetchedAt": "2026-09-07T14:54:46Z",
       "repo": "whatwg/quirks",
       "totalCount": 157
+    },
+    "whatwg/serial@main": {
+      "branch": "main",
+      "commits": {
+        "0122b1f11b9151864d8bc92f14a673fd219f7aef": {
+          "authorEmail": "me@michaelkohler.info",
+          "authorLogin": "michaelkohler",
+          "authorName": "Michael Kohler",
+          "committedDate": "2016-10-26T11:00:43Z",
+          "oid": "0122b1f11b9151864d8bc92f14a673fd219f7aef",
+          "prAuthorLogin": "michaelkohler",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2016-10-26T11:00:43Z",
+          "prNumber": 43,
+          "prUrl": "https://github.com/WICG/serial/pull/43"
+        },
+        "02fe0ca3d50c4e992ea220301a7be119d4885e9d": {
+          "authorEmail": "keavon@keavon.com",
+          "authorLogin": "keavon",
+          "authorName": "Keavon Chambers",
+          "committedDate": "2019-10-31T16:43:19Z",
+          "oid": "02fe0ca3d50c4e992ea220301a7be119d4885e9d",
+          "prAuthorLogin": "keavon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-10-31T16:43:20Z",
+          "prNumber": 74,
+          "prUrl": "https://github.com/WICG/serial/pull/74"
+        },
+        "03b88247357727848fd19cd7267614921afd9d25": {
+          "authorEmail": "mattreynolds@google.com",
+          "authorLogin": "nondebug",
+          "authorName": "Matt Reynolds",
+          "committedDate": "2023-12-21T18:21:56Z",
+          "oid": "03b88247357727848fd19cd7267614921afd9d25",
+          "prAuthorLogin": "nondebug",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-12-21T18:21:56Z",
+          "prNumber": 197,
+          "prUrl": "https://github.com/WICG/serial/pull/197"
+        },
+        "04497765e8e37b2d343b2414f14f7ae921d57e46": {
+          "authorEmail": "marcos+github@marcosc.com",
+          "authorLogin": "",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2015-08-31T02:25:30Z",
+          "oid": "04497765e8e37b2d343b2414f14f7ae921d57e46",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "05e623ab2a56373e79b75bd30c04f9e5531dc8c7": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-01T21:06:13Z",
+          "oid": "05e623ab2a56373e79b75bd30c04f9e5531dc8c7",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "0731e86dfcdceb7cc4bd83acbe3f31531d887236": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2020-02-27T22:10:23Z",
+          "oid": "0731e86dfcdceb7cc4bd83acbe3f31531d887236",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "0919e2f61acb3c2fa3c007c60351491cf7c2f1e8": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-06T21:41:15Z",
+          "oid": "0919e2f61acb3c2fa3c007c60351491cf7c2f1e8",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-06T22:44:34Z",
+          "prNumber": 13,
+          "prUrl": "https://github.com/WICG/serial/pull/13"
+        },
+        "0a52ad90d529ec97af688c4cf569452cfa44673a": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-11-07T23:13:52Z",
+          "oid": "0a52ad90d529ec97af688c4cf569452cfa44673a",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "0a6672f2cd265b45c65d05cebc3969c6e6ba1ef1": {
+          "authorEmail": "mattreynolds@google.com",
+          "authorLogin": "nondebug",
+          "authorName": "Matt Reynolds",
+          "committedDate": "2024-02-08T00:10:16Z",
+          "oid": "0a6672f2cd265b45c65d05cebc3969c6e6ba1ef1",
+          "prAuthorLogin": "nondebug",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2024-02-08T00:10:16Z",
+          "prNumber": 198,
+          "prUrl": "https://github.com/WICG/serial/pull/198"
+        },
+        "0ab4392ec6e6c105b4e6086b39510496648f71df": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-11-07T00:03:08Z",
+          "oid": "0ab4392ec6e6c105b4e6086b39510496648f71df",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "0db6a52247293cd55a86df58be98a24cc6db33f3": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2020-08-13T01:15:16Z",
+          "oid": "0db6a52247293cd55a86df58be98a24cc6db33f3",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "0fabf9e9582dc80310cdede8659718dad259d055": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-31T19:06:29Z",
+          "oid": "0fabf9e9582dc80310cdede8659718dad259d055",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "11f61618256a21ce867e43738bf5579a4fe16a59": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2026-02-18T22:50:53Z",
+          "oid": "11f61618256a21ce867e43738bf5579a4fe16a59",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-02-18T22:50:53Z",
+          "prNumber": 222,
+          "prUrl": "https://github.com/WICG/serial/pull/222"
+        },
+        "12f72a26effca9fc93fa47f087a61f924191007f": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-01-09T01:08:33Z",
+          "oid": "12f72a26effca9fc93fa47f087a61f924191007f",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-01-09T01:08:34Z",
+          "prNumber": 53,
+          "prUrl": "https://github.com/WICG/serial/pull/53"
+        },
+        "13afc8a9699ccc95e0d486873cde620efd8d09bf": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2023-04-13T00:16:42Z",
+          "oid": "13afc8a9699ccc95e0d486873cde620efd8d09bf",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-04-13T00:16:42Z",
+          "prNumber": 183,
+          "prUrl": "https://github.com/WICG/serial/pull/183"
+        },
+        "14348d4eb0e46c0755f9f91546562f21fe60edbb": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-06T19:13:55Z",
+          "oid": "14348d4eb0e46c0755f9f91546562f21fe60edbb",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "16288862446ff1c9750a2da35ca2016594e0fdff": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2018-09-18T03:39:52Z",
+          "oid": "16288862446ff1c9750a2da35ca2016594e0fdff",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "16631d37e7925e1a627a59327b9178f4926388eb": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-29T21:15:23Z",
+          "oid": "16631d37e7925e1a627a59327b9178f4926388eb",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "174da59080a840f5b72baf162654a004ed4deb09": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2020-08-12T21:26:58Z",
+          "oid": "174da59080a840f5b72baf162654a004ed4deb09",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2020-08-12T21:26:58Z",
+          "prNumber": 98,
+          "prUrl": "https://github.com/WICG/serial/pull/98"
+        },
+        "1a465d33f6b5f7c4ebb56f18b10a184d3581366d": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-02-19T22:25:45Z",
+          "oid": "1a465d33f6b5f7c4ebb56f18b10a184d3581366d",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "22be5c28396691a662b64d7355b43c7f76b46e4e": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-01T19:12:18Z",
+          "oid": "22be5c28396691a662b64d7355b43c7f76b46e4e",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "235bd1ccb9054837f61dbfa4c5555676ab7f01e0": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-07T11:56:37Z",
+          "oid": "235bd1ccb9054837f61dbfa4c5555676ab7f01e0",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "267e4d1dcb92242ddd4535991d51339fb766d43b": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-31T17:45:34Z",
+          "oid": "267e4d1dcb92242ddd4535991d51339fb766d43b",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "28f3201db03819e4e99023ff18b6775692188c5a": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2018-09-30T16:43:25Z",
+          "oid": "28f3201db03819e4e99023ff18b6775692188c5a",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2018-09-30T16:43:25Z",
+          "prNumber": 46,
+          "prUrl": "https://github.com/WICG/serial/pull/46"
+        },
+        "2b239c4c26431cd0946d34988f2203aa4f4eea49": {
+          "authorEmail": "scheib@users.noreply.github.com",
+          "authorLogin": "scheib",
+          "authorName": "Vincent Scheib",
+          "committedDate": "2019-11-21T23:58:25Z",
+          "oid": "2b239c4c26431cd0946d34988f2203aa4f4eea49",
+          "prAuthorLogin": "scheib",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-11-21T23:58:25Z",
+          "prNumber": 78,
+          "prUrl": "https://github.com/WICG/serial/pull/78"
+        },
+        "2bf7ae7a653b848980e7ff16e9d726b80ea681f7": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2025-04-23T00:42:01Z",
+          "oid": "2bf7ae7a653b848980e7ff16e9d726b80ea681f7",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2025-04-23T00:42:02Z",
+          "prNumber": 214,
+          "prUrl": "https://github.com/WICG/serial/pull/214"
+        },
+        "2c7af8fd63f7382a3b7ce3c5dc829df167b3be02": {
+          "authorEmail": "mattreynolds@google.com",
+          "authorLogin": "nondebug",
+          "authorName": "Matt Reynolds",
+          "committedDate": "2023-06-15T00:05:18Z",
+          "oid": "2c7af8fd63f7382a3b7ce3c5dc829df167b3be02",
+          "prAuthorLogin": "nondebug",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-06-15T00:05:18Z",
+          "prNumber": 187,
+          "prUrl": "https://github.com/WICG/serial/pull/187"
+        },
+        "2f79c3cf216ad3766fe33b8a189a368802fba626": {
+          "authorEmail": "waldron.rick@gmail.com",
+          "authorLogin": "rwaldron",
+          "authorName": "Rick Waldron",
+          "committedDate": "2015-08-30T02:58:24Z",
+          "oid": "2f79c3cf216ad3766fe33b8a189a368802fba626",
+          "prAuthorLogin": "rwaldron",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2015-08-31T02:25:30Z",
+          "prNumber": 33,
+          "prUrl": "https://github.com/WICG/serial/pull/33"
+        },
+        "32dfe36cf081dd26f41681159a11863f5167bb91": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2020-11-20T20:51:04Z",
+          "oid": "32dfe36cf081dd26f41681159a11863f5167bb91",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "330aa42fc9c94428981b71dcdcacd767b01904f9": {
+          "authorEmail": "marcosscaceres@gmail.com",
+          "authorLogin": "marcoscaceres-remote",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2014-03-19T16:24:56Z",
+          "oid": "330aa42fc9c94428981b71dcdcacd767b01904f9",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "343fe0965f41df5d12eef939a327a2bc797c9127": {
+          "authorEmail": "beaufort.francois@gmail.com",
+          "authorLogin": "beaufortfrancois",
+          "authorName": "Fran\u00e7ois Beaufort",
+          "committedDate": "2023-09-29T07:21:47Z",
+          "oid": "343fe0965f41df5d12eef939a327a2bc797c9127",
+          "prAuthorLogin": "beaufortfrancois",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-09-29T07:21:47Z",
+          "prNumber": 196,
+          "prUrl": "https://github.com/WICG/serial/pull/196"
+        },
+        "3522eeb7e9a8f555acfb5b1b499b5343cc9de333": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-07T11:04:27Z",
+          "oid": "3522eeb7e9a8f555acfb5b1b499b5343cc9de333",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "375a34b24107df672549e29c76d7573acf364f2b": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-10-15T17:02:15Z",
+          "oid": "375a34b24107df672549e29c76d7573acf364f2b",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-10-15T17:02:16Z",
+          "prNumber": 72,
+          "prUrl": "https://github.com/WICG/serial/pull/72"
+        },
+        "3961d9b85569355c5dc26e31212071a060f42c5b": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-06T21:41:15Z",
+          "oid": "3961d9b85569355c5dc26e31212071a060f42c5b",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-06T22:44:34Z",
+          "prNumber": 13,
+          "prUrl": "https://github.com/WICG/serial/pull/13"
+        },
+        "3aafa4bf4cdaefeb0fc8ffed689f2232307e457a": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2014-07-14T14:38:20Z",
+          "oid": "3aafa4bf4cdaefeb0fc8ffed689f2232307e457a",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "3bb9304c79f60450402fecd1984aef43820db912": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-29T21:56:47Z",
+          "oid": "3bb9304c79f60450402fecd1984aef43820db912",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "4277674e71691f24ed1326a2cf9b71218ada412a": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2025-04-22T23:03:56Z",
+          "oid": "4277674e71691f24ed1326a2cf9b71218ada412a",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2025-04-22T23:03:56Z",
+          "prNumber": 215,
+          "prUrl": "https://github.com/WICG/serial/pull/215"
+        },
+        "430594f14d9cca8c39a5a50ba0a73e90d9817080": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-07-30T21:34:43Z",
+          "oid": "430594f14d9cca8c39a5a50ba0a73e90d9817080",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-07-30T21:34:44Z",
+          "prNumber": 68,
+          "prUrl": "https://github.com/WICG/serial/pull/68"
+        },
+        "43f9073a9de9edbfbe26b20ca11d16f6a4c9fd94": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-06-22T18:14:10Z",
+          "oid": "43f9073a9de9edbfbe26b20ca11d16f6a4c9fd94",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2021-06-22T18:14:10Z",
+          "prNumber": 138,
+          "prUrl": "https://github.com/WICG/serial/pull/138"
+        },
+        "47711a9a025749925cebcb8da423635955aa759f": {
+          "authorEmail": "mattreynolds@google.com",
+          "authorLogin": "nondebug",
+          "authorName": "Matt Reynolds",
+          "committedDate": "2023-05-25T23:09:48Z",
+          "oid": "47711a9a025749925cebcb8da423635955aa759f",
+          "prAuthorLogin": "nondebug",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-05-25T23:09:48Z",
+          "prNumber": 184,
+          "prUrl": "https://github.com/WICG/serial/pull/184"
+        },
+        "47fb3d4dfbbad1a17f236d9ce6291adda4860b21": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-07T11:04:13Z",
+          "oid": "47fb3d4dfbbad1a17f236d9ce6291adda4860b21",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "48854b3a497cf1f47ba403b23589e97f930ea681": {
+          "authorEmail": "45840+spookyvision@users.noreply.github.com",
+          "authorLogin": "spookyvision",
+          "authorName": "Anatol Ulrich",
+          "committedDate": "2022-08-30T21:01:11Z",
+          "oid": "48854b3a497cf1f47ba403b23589e97f930ea681",
+          "prAuthorLogin": "spookyvision",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2022-08-30T21:01:12Z",
+          "prNumber": 170,
+          "prUrl": "https://github.com/WICG/serial/pull/170"
+        },
+        "4aece9bd4f2a5924d3226d246d749b895d507a6e": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2025-07-30T23:23:25Z",
+          "oid": "4aece9bd4f2a5924d3226d246d749b895d507a6e",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2025-07-30T23:23:25Z",
+          "prNumber": 217,
+          "prUrl": "https://github.com/WICG/serial/pull/217"
+        },
+        "4fbe1e38b6946690b77cdd3965043bd6b71d0a49": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-30T11:15:39Z",
+          "oid": "4fbe1e38b6946690b77cdd3965043bd6b71d0a49",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-10-31T17:45:34Z",
+          "prNumber": 5,
+          "prUrl": "https://github.com/WICG/serial/pull/5"
+        },
+        "53f692f38d9f78c0bd11e65da83040e58df5f491": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-01T20:25:53Z",
+          "oid": "53f692f38d9f78c0bd11e65da83040e58df5f491",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T21:06:13Z",
+          "prNumber": 10,
+          "prUrl": "https://github.com/WICG/serial/pull/10"
+        },
+        "5574d0df8ecda1b65bbf2a990463f26f0a340822": {
+          "authorEmail": "mattreynolds@google.com",
+          "authorLogin": "nondebug",
+          "authorName": "Matt Reynolds",
+          "committedDate": "2023-04-12T22:53:56Z",
+          "oid": "5574d0df8ecda1b65bbf2a990463f26f0a340822",
+          "prAuthorLogin": "nondebug",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-04-12T22:53:57Z",
+          "prNumber": 180,
+          "prUrl": "https://github.com/WICG/serial/pull/180"
+        },
+        "576c643ab5fb8fc4431be2309651c9d2cbd01243": {
+          "authorEmail": "ms2ger@gmail.com",
+          "authorLogin": "ms2ger",
+          "authorName": "Ms2ger",
+          "committedDate": "2014-07-12T20:23:05Z",
+          "oid": "576c643ab5fb8fc4431be2309651c9d2cbd01243",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "57f36a5257313eff05bb9ced731ba05b9348c8b8": {
+          "authorEmail": "domenic@domenicdenicola.com",
+          "authorLogin": "domenic",
+          "authorName": "Domenic Denicola",
+          "committedDate": "2013-10-30T02:58:35Z",
+          "oid": "57f36a5257313eff05bb9ced731ba05b9348c8b8",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "5952008914e14ab5402a747d0a233056e059f84a": {
+          "authorEmail": "reillyg@chromium.org",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-03-31T18:17:44Z",
+          "oid": "5952008914e14ab5402a747d0a233056e059f84a",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "59de5c48780fef21ed2a472b1bbf3d0648fcace5": {
+          "authorEmail": "mattreynolds@google.com",
+          "authorLogin": "nondebug",
+          "authorName": "Matt Reynolds",
+          "committedDate": "2023-07-25T19:54:47Z",
+          "oid": "59de5c48780fef21ed2a472b1bbf3d0648fcace5",
+          "prAuthorLogin": "nondebug",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-07-25T19:54:47Z",
+          "prNumber": 189,
+          "prUrl": "https://github.com/WICG/serial/pull/189"
+        },
+        "5a840ed268f773bffaba0fe57a68b8ffd686b67a": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-01T20:10:58Z",
+          "oid": "5a840ed268f773bffaba0fe57a68b8ffd686b67a",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "5b3e26b3c35ab6e95ca7b95fef4cc91b649abbeb": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-06T19:10:57Z",
+          "oid": "5b3e26b3c35ab6e95ca7b95fef4cc91b649abbeb",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-06T19:13:55Z",
+          "prNumber": 15,
+          "prUrl": "https://github.com/WICG/serial/pull/15"
+        },
+        "5d18b1cce787c84a088a91a54e9e27a0defb3976": {
+          "authorEmail": "sankha93@gmail.com",
+          "authorLogin": "ngsankha",
+          "authorName": "Sankha Narayan Guria",
+          "committedDate": "2014-07-14T09:34:34Z",
+          "oid": "5d18b1cce787c84a088a91a54e9e27a0defb3976",
+          "prAuthorLogin": "ngsankha",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2014-07-14T14:38:20Z",
+          "prNumber": 32,
+          "prUrl": "https://github.com/WICG/serial/pull/32"
+        },
+        "5e3b993686ae4d14f7655d75e17c9b1433f24b16": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2025-02-22T00:45:16Z",
+          "oid": "5e3b993686ae4d14f7655d75e17c9b1433f24b16",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2025-02-22T00:45:17Z",
+          "prNumber": 210,
+          "prUrl": "https://github.com/WICG/serial/pull/210"
+        },
+        "5f0fe335b1b4435bfbeb07fc60a943a5478f0a1d": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2017-01-25T07:18:00Z",
+          "oid": "5f0fe335b1b4435bfbeb07fc60a943a5478f0a1d",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "600bbf14337b49bca06ba9b7182d21d2d8b455c2": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2026-06-02T00:20:50Z",
+          "oid": "600bbf14337b49bca06ba9b7182d21d2d8b455c2",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-06-02T00:20:50Z",
+          "prNumber": 230,
+          "prUrl": "https://github.com/WICG/serial/pull/230"
+        },
+        "60713423b94c73e1fb2efbdfafeb2d9279bfcad8": {
+          "authorEmail": "waldron.rick@gmail.com",
+          "authorLogin": "rwaldron",
+          "authorName": "Rick Waldron",
+          "committedDate": "2018-09-20T13:30:56Z",
+          "oid": "60713423b94c73e1fb2efbdfafeb2d9279bfcad8",
+          "prAuthorLogin": "rwaldron",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2018-09-20T13:30:57Z",
+          "prNumber": 47,
+          "prUrl": "https://github.com/WICG/serial/pull/47"
+        },
+        "61a8ab16c9e95254203c90f5a4686ca14c19f51a": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-02-19T19:26:56Z",
+          "oid": "61a8ab16c9e95254203c90f5a4686ca14c19f51a",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2021-02-19T19:26:56Z",
+          "prNumber": 119,
+          "prUrl": "https://github.com/WICG/serial/pull/119"
+        },
+        "63a794b6befbe618b7e5add3cbc6eaec4e588801": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-10-15T17:02:15Z",
+          "oid": "63a794b6befbe618b7e5add3cbc6eaec4e588801",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-10-15T17:02:16Z",
+          "prNumber": 72,
+          "prUrl": "https://github.com/WICG/serial/pull/72"
+        },
+        "6891951a64c882ee8e5b0c4a7847114fd5f83981": {
+          "authorEmail": "wizard@roborooter.com",
+          "authorLogin": "reconbot",
+          "authorName": "Francis Gulotta",
+          "committedDate": "2018-09-23T02:46:58Z",
+          "oid": "6891951a64c882ee8e5b0c4a7847114fd5f83981",
+          "prAuthorLogin": "reconbot",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2018-09-23T02:46:59Z",
+          "prNumber": 49,
+          "prUrl": "https://github.com/WICG/serial/pull/49"
+        },
+        "6957968d12f2dbad99084f187fa4a1dd90f97108": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-31T19:09:27Z",
+          "oid": "6957968d12f2dbad99084f187fa4a1dd90f97108",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "6abb620fbb3a0ac7cba4bc599406ec104fb0cd48": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2019-01-07T02:51:16Z",
+          "oid": "6abb620fbb3a0ac7cba4bc599406ec104fb0cd48",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "6c737e41f5ebb0c8a8da266b3c7cc025d220335a": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-06T21:43:54Z",
+          "oid": "6c737e41f5ebb0c8a8da266b3c7cc025d220335a",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-06T22:44:34Z",
+          "prNumber": 13,
+          "prUrl": "https://github.com/WICG/serial/pull/13"
+        },
+        "717bde0ce5c50e5a63d1aeb18892c98a285d4496": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-31T19:07:25Z",
+          "oid": "717bde0ce5c50e5a63d1aeb18892c98a285d4496",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "74d6d5199d27e0d15b555c346c65e953fdec4789": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2018-09-18T03:39:01Z",
+          "oid": "74d6d5199d27e0d15b555c346c65e953fdec4789",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "7a3201437441a1e69242043cc77d598b4f5dd38c": {
+          "authorEmail": "zcorpan@gmail.com",
+          "authorLogin": "zcorpan",
+          "authorName": "Simon Pieters",
+          "committedDate": "2017-06-15T05:13:11Z",
+          "oid": "7a3201437441a1e69242043cc77d598b4f5dd38c",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "7b11d03abb175e75c0261cf5d9941cb35e57182f": {
+          "authorEmail": "97704544+chengweih001@users.noreply.github.com",
+          "authorLogin": "chengweih001",
+          "authorName": "Jack Hsieh",
+          "committedDate": "2024-08-29T22:59:45Z",
+          "oid": "7b11d03abb175e75c0261cf5d9941cb35e57182f",
+          "prAuthorLogin": "chengweih001",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2024-08-29T22:59:45Z",
+          "prNumber": 206,
+          "prUrl": "https://github.com/WICG/serial/pull/206"
+        },
+        "7f4c5890e11c7dfaeea9de9a013a6c211a890797": {
+          "authorEmail": "waldron.rick@gmail.com",
+          "authorLogin": "rwaldron",
+          "authorName": "Rick Waldron",
+          "committedDate": "2014-03-19T14:28:49Z",
+          "oid": "7f4c5890e11c7dfaeea9de9a013a6c211a890797",
+          "prAuthorLogin": "rwaldron",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2014-03-19T16:24:56Z",
+          "prNumber": 31,
+          "prUrl": "https://github.com/WICG/serial/pull/31"
+        },
+        "7facafede87b3e0b18700e5ed4febe17a32a3cb0": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-30T11:28:14Z",
+          "oid": "7facafede87b3e0b18700e5ed4febe17a32a3cb0",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "8527faafebd002e7ca3e20dd92360dcac14df66d": {
+          "authorEmail": "beaufort.francois@gmail.com",
+          "authorLogin": "beaufortfrancois",
+          "authorName": "Fran\u00e7ois Beaufort",
+          "committedDate": "2022-04-14T19:21:06Z",
+          "oid": "8527faafebd002e7ca3e20dd92360dcac14df66d",
+          "prAuthorLogin": "beaufortfrancois",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2022-04-14T19:21:07Z",
+          "prNumber": 161,
+          "prUrl": "https://github.com/WICG/serial/pull/161"
+        },
+        "881d4b9e2c6564b92c6c1dfdaac56931ed90ac87": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2022-02-10T02:12:14Z",
+          "oid": "881d4b9e2c6564b92c6c1dfdaac56931ed90ac87",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2022-02-10T02:12:14Z",
+          "prNumber": 160,
+          "prUrl": "https://github.com/WICG/serial/pull/160"
+        },
+        "89551edb825d7f0fd8f7bac346a49db5bc9a30af": {
+          "authorEmail": "cmumford@cmumford.com",
+          "authorLogin": "cmumford",
+          "authorName": "Chris Mumford",
+          "committedDate": "2021-12-01T18:23:49Z",
+          "oid": "89551edb825d7f0fd8f7bac346a49db5bc9a30af",
+          "prAuthorLogin": "cmumford",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2021-12-01T18:23:49Z",
+          "prNumber": 150,
+          "prUrl": "https://github.com/WICG/serial/pull/150"
+        },
+        "8ea563bcf7bde5384fff53fbf9f809a240216848": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-04-01T20:52:02Z",
+          "oid": "8ea563bcf7bde5384fff53fbf9f809a240216848",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2021-04-01T20:52:03Z",
+          "prNumber": 130,
+          "prUrl": "https://github.com/WICG/serial/pull/130"
+        },
+        "8fcf331eba103456d892de131b5c66dbc2af6929": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2020-12-04T01:59:21Z",
+          "oid": "8fcf331eba103456d892de131b5c66dbc2af6929",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2020-12-04T01:59:22Z",
+          "prNumber": 105,
+          "prUrl": "https://github.com/WICG/serial/pull/105"
+        },
+        "96a597a07ae1828998438fe1a49b2f16120d7a71": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2020-08-01T00:32:47Z",
+          "oid": "96a597a07ae1828998438fe1a49b2f16120d7a71",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "99503deafaf0e4e88013718399299d3df40d85aa": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2021-07-15T18:51:52Z",
+          "oid": "99503deafaf0e4e88013718399299d3df40d85aa",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2021-07-15T18:51:52Z",
+          "prNumber": 145,
+          "prUrl": "https://github.com/WICG/serial/pull/145"
+        },
+        "9db53c86f3c5d0f548f58a9be5cee09a11a0a266": {
+          "authorEmail": "travil@microsoft.com",
+          "authorLogin": "travisleithead",
+          "authorName": "Travis Leithead",
+          "committedDate": "2019-09-27T19:58:22Z",
+          "oid": "9db53c86f3c5d0f548f58a9be5cee09a11a0a266",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "a429bd6212c2853a42bbc0defe2bf365cd1504ee": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-02T12:08:59Z",
+          "oid": "a429bd6212c2853a42bbc0defe2bf365cd1504ee",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-02T12:12:04Z",
+          "prNumber": 8,
+          "prUrl": "https://github.com/WICG/serial/pull/8"
+        },
+        "a513ce1914cd43a21071fb39302faef66800df40": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-10-15T21:49:13Z",
+          "oid": "a513ce1914cd43a21071fb39302faef66800df40",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "a5b6fbf3f442ea26bdbabda6833f9501a9b75172": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-30T11:28:26Z",
+          "oid": "a5b6fbf3f442ea26bdbabda6833f9501a9b75172",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "a69449c97babbaba8a04814cbe982146649d016f": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2020-12-04T02:17:03Z",
+          "oid": "a69449c97babbaba8a04814cbe982146649d016f",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "a7f62a189bad9c8a5a040444afbd0558eb17a51c": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-29T15:44:42Z",
+          "oid": "a7f62a189bad9c8a5a040444afbd0558eb17a51c",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "a8cf0c2ffdcc1854f83e58aa9143e96414b28dc0": {
+          "authorEmail": "d@domenic.me",
+          "authorLogin": "domenic",
+          "authorName": "Domenic Denicola",
+          "committedDate": "2022-08-06T03:00:50Z",
+          "oid": "a8cf0c2ffdcc1854f83e58aa9143e96414b28dc0",
+          "prAuthorLogin": "domenic",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2022-08-06T03:00:50Z",
+          "prNumber": 137,
+          "prUrl": "https://github.com/WICG/serial/pull/137"
+        },
+        "aa86f0cf4cbc8f4500b094f20bcecf0a54cabbfe": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2018-12-22T16:53:12Z",
+          "oid": "aa86f0cf4cbc8f4500b094f20bcecf0a54cabbfe",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2018-12-22T16:53:13Z",
+          "prNumber": 52,
+          "prUrl": "https://github.com/WICG/serial/pull/52"
+        },
+        "ac38b6752fe2059152f2f228b4fd89c77cc2c1fc": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2019-03-06T01:43:33Z",
+          "oid": "ac38b6752fe2059152f2f228b4fd89c77cc2c1fc",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-03-06T01:43:34Z",
+          "prNumber": 64,
+          "prUrl": "https://github.com/WICG/serial/pull/64"
+        },
+        "ba72c63c56762abdef4753765926bcc242ba0db7": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-06T22:44:34Z",
+          "oid": "ba72c63c56762abdef4753765926bcc242ba0db7",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "bb7e01e5bb5f3a08075494c0b2d6152ef1154da6": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2023-07-19T23:49:18Z",
+          "oid": "bb7e01e5bb5f3a08075494c0b2d6152ef1154da6",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-07-19T23:49:18Z",
+          "prNumber": 191,
+          "prUrl": "https://github.com/WICG/serial/pull/191"
+        },
+        "bd037b2ac61b605b1d40db6f7b8726f05d684ae6": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-07-12T21:13:04Z",
+          "oid": "bd037b2ac61b605b1d40db6f7b8726f05d684ae6",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2021-07-12T21:13:05Z",
+          "prNumber": 144,
+          "prUrl": "https://github.com/WICG/serial/pull/144"
+        },
+        "c368e14fca7922e20ae317780ef148c34adbf490": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2026-02-02T18:38:56Z",
+          "oid": "c368e14fca7922e20ae317780ef148c34adbf490",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-02-02T18:38:57Z",
+          "prNumber": 220,
+          "prUrl": "https://github.com/WICG/serial/pull/220"
+        },
+        "c5f665223112634cedb5e74612b26648447fb7ce": {
+          "authorEmail": "wizard@roborooter.com",
+          "authorLogin": "reconbot",
+          "authorName": "Francis Gulotta",
+          "committedDate": "2017-01-25T07:01:38Z",
+          "oid": "c5f665223112634cedb5e74612b26648447fb7ce",
+          "prAuthorLogin": "reconbot",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2017-01-25T07:01:38Z",
+          "prNumber": 40,
+          "prUrl": "https://github.com/WICG/serial/pull/40"
+        },
+        "cb642a18f83b82bacc442d282c17a97baf2b2f17": {
+          "authorEmail": "reillyg@google.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2022-01-19T23:38:13Z",
+          "oid": "cb642a18f83b82bacc442d282c17a97baf2b2f17",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "cc2e66b54851889162024f33b0637843ba694b26": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2018-09-18T03:38:59Z",
+          "oid": "cc2e66b54851889162024f33b0637843ba694b26",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "ccdb31d9dfbb1bc72cf0aea623a633ec2d3cf795": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-02-10T18:47:11Z",
+          "oid": "ccdb31d9dfbb1bc72cf0aea623a633ec2d3cf795",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2021-02-10T18:47:11Z",
+          "prNumber": 115,
+          "prUrl": "https://github.com/WICG/serial/pull/115"
+        },
+        "cd4213ded63cffe5336fa8c4dd1f53012715541e": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-29T20:03:28Z",
+          "oid": "cd4213ded63cffe5336fa8c4dd1f53012715541e",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "ce90c45b3c05a94df990e837d92cae4e16aa0cf3": {
+          "authorEmail": "fs@florianscholz.com",
+          "authorLogin": "elchi3",
+          "authorName": "Florian Scholz",
+          "committedDate": "2022-02-02T19:37:28Z",
+          "oid": "ce90c45b3c05a94df990e837d92cae4e16aa0cf3",
+          "prAuthorLogin": "elchi3",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2022-02-02T19:37:28Z",
+          "prNumber": 159,
+          "prUrl": "https://github.com/WICG/serial/pull/159"
+        },
+        "d15c704a46f53e46348185ae12f704e0ae6b3e90": {
+          "authorEmail": "mattreynolds@google.com",
+          "authorLogin": "nondebug",
+          "authorName": "Matt Reynolds",
+          "committedDate": "2023-06-05T19:31:03Z",
+          "oid": "d15c704a46f53e46348185ae12f704e0ae6b3e90",
+          "prAuthorLogin": "nondebug",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-06-05T19:31:04Z",
+          "prNumber": 185,
+          "prUrl": "https://github.com/WICG/serial/pull/185"
+        },
+        "d1ad6e1401b6ec395819cfec173281019b719e21": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-02T16:50:40Z",
+          "oid": "d1ad6e1401b6ec395819cfec173281019b719e21",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-06T19:13:55Z",
+          "prNumber": 15,
+          "prUrl": "https://github.com/WICG/serial/pull/15"
+        },
+        "d38602de0649a45b9901a7daaf0ed46a8ff07220": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2020-01-30T19:40:09Z",
+          "oid": "d38602de0649a45b9901a7daaf0ed46a8ff07220",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2020-01-30T19:40:09Z",
+          "prNumber": 75,
+          "prUrl": "https://github.com/WICG/serial/pull/75"
+        },
+        "d3fdc577fb1b4d95875c001f199630f9f3417866": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-01-09T02:11:36Z",
+          "oid": "d3fdc577fb1b4d95875c001f199630f9f3417866",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-01-09T02:11:37Z",
+          "prNumber": 56,
+          "prUrl": "https://github.com/WICG/serial/pull/56"
+        },
+        "d8e484f25cbbe66f315cb1db5a5691e9ac1aef1b": {
+          "authorEmail": "jesse.melhuish@gmail.com",
+          "authorLogin": "melhuishj",
+          "authorName": "melhuishj",
+          "committedDate": "2023-07-25T17:44:21Z",
+          "oid": "d8e484f25cbbe66f315cb1db5a5691e9ac1aef1b",
+          "prAuthorLogin": "melhuishj",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2023-07-25T17:44:21Z",
+          "prNumber": 192,
+          "prUrl": "https://github.com/WICG/serial/pull/192"
+        },
+        "da5bd1196dab891250575317afefa06266dd21e3": {
+          "authorEmail": "dom@w3.org",
+          "authorLogin": "dontcallmedom",
+          "authorName": "Dominique Hazael-Massieux",
+          "committedDate": "2020-12-01T00:46:41Z",
+          "oid": "da5bd1196dab891250575317afefa06266dd21e3",
+          "prAuthorLogin": "dontcallmedom",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2020-12-01T00:46:41Z",
+          "prNumber": 106,
+          "prUrl": "https://github.com/WICG/serial/pull/106"
+        },
+        "dd9cc484ecf4301e90c9c97a3c6a89158999fd9e": {
+          "authorEmail": "kenneth.r.christiansen@intel.com",
+          "authorLogin": "kenchris",
+          "authorName": "Kenneth Rohde Christiansen",
+          "committedDate": "2020-05-27T00:42:42Z",
+          "oid": "dd9cc484ecf4301e90c9c97a3c6a89158999fd9e",
+          "prAuthorLogin": "kenchris",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2020-05-27T00:42:42Z",
+          "prNumber": 88,
+          "prUrl": "https://github.com/WICG/serial/pull/88"
+        },
+        "deaea8a48b8ce59c2b9d1ac0013c135a6399c6da": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-11-02T12:12:04Z",
+          "oid": "deaea8a48b8ce59c2b9d1ac0013c135a6399c6da",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "e287b7067ac4fbdea90d4f65a5c3d29d2bc4aa11": {
+          "authorEmail": "44539790+Clemenard@users.noreply.github.com",
+          "authorLogin": "clemenard",
+          "authorName": "Cl\u00e9ment Menard",
+          "committedDate": "2020-06-16T17:12:17Z",
+          "oid": "e287b7067ac4fbdea90d4f65a5c3d29d2bc4aa11",
+          "prAuthorLogin": "clemenard",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2020-06-16T17:12:18Z",
+          "prNumber": 89,
+          "prUrl": "https://github.com/WICG/serial/pull/89"
+        },
+        "e295aefc1a86bf39a91ffbe2b88256e5b7266c28": {
+          "authorEmail": "noopkat@users.noreply.github.com",
+          "authorLogin": "noopkat",
+          "authorName": "Suz Hinton",
+          "committedDate": "2019-09-30T04:31:40Z",
+          "oid": "e295aefc1a86bf39a91ffbe2b88256e5b7266c28",
+          "prAuthorLogin": "noopkat",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-09-30T04:31:41Z",
+          "prNumber": 70,
+          "prUrl": "https://github.com/WICG/serial/pull/70"
+        },
+        "e6905867e30bd8ab143130d083bb63007c523ad3": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-30T09:41:06Z",
+          "oid": "e6905867e30bd8ab143130d083bb63007c523ad3",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "e77b64099532ad40c23f7faff46ac8f29b5c49e6": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-07-12T21:14:26Z",
+          "oid": "e77b64099532ad40c23f7faff46ac8f29b5c49e6",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2021-07-12T21:14:27Z",
+          "prNumber": 140,
+          "prUrl": "https://github.com/WICG/serial/pull/140"
+        },
+        "e799ffb38026a6067742df1aea2b0efdc97f55f2": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2018-09-18T03:39:00Z",
+          "oid": "e799ffb38026a6067742df1aea2b0efdc97f55f2",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "e8e8e1672f5af8aef3f0308967a38d023189a45c": {
+          "authorEmail": "scheib@users.noreply.github.com",
+          "authorLogin": "scheib",
+          "authorName": "Vincent Scheib",
+          "committedDate": "2019-11-22T00:05:34Z",
+          "oid": "e8e8e1672f5af8aef3f0308967a38d023189a45c",
+          "prAuthorLogin": "scheib",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-11-22T00:05:34Z",
+          "prNumber": 79,
+          "prUrl": "https://github.com/WICG/serial/pull/79"
+        },
+        "f06006f61e24dfad8664e0b1c4d3ea09cd739f2d": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-29T21:45:49Z",
+          "oid": "f06006f61e24dfad8664e0b1c4d3ea09cd739f2d",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "f0d0cc2877d79fadf3cc7ad4614f8c99d61434eb": {
+          "authorEmail": "marcos+github@marcosc.com",
+          "authorLogin": "",
+          "authorName": "Marcos C\u00e1ceres",
+          "committedDate": "2016-09-05T05:34:58Z",
+          "oid": "f0d0cc2877d79fadf3cc7ad4614f8c99d61434eb",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2016-09-05T05:34:58Z",
+          "prNumber": 27,
+          "prUrl": "https://github.com/WICG/serial/pull/27"
+        },
+        "f1fcf9f19e6eccaf659e941f075d4f71f051d614": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-11-07T22:50:31Z",
+          "oid": "f1fcf9f19e6eccaf659e941f075d4f71f051d614",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-11-07T22:50:32Z",
+          "prNumber": 76,
+          "prUrl": "https://github.com/WICG/serial/pull/76"
+        },
+        "f262304428f378974dc2282f151a7bc64f99f576": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-29T20:03:13Z",
+          "oid": "f262304428f378974dc2282f151a7bc64f99f576",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "f5953d9e6345578fe80d9ff821b76145aa69c790": {
+          "authorEmail": "florian@loitsch.com",
+          "authorLogin": "floitsch",
+          "authorName": "Florian Loitsch",
+          "committedDate": "2021-01-05T22:19:27Z",
+          "oid": "f5953d9e6345578fe80d9ff821b76145aa69c790",
+          "prAuthorLogin": "floitsch",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2021-01-05T22:19:28Z",
+          "prNumber": 110,
+          "prUrl": "https://github.com/WICG/serial/pull/110"
+        },
+        "f5f63d275cc1050471352abcd4e8244233c8d91b": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2022-07-19T20:12:53Z",
+          "oid": "f5f63d275cc1050471352abcd4e8244233c8d91b",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2022-07-19T20:12:53Z",
+          "prNumber": 167,
+          "prUrl": "https://github.com/WICG/serial/pull/167"
+        },
+        "f76622041e272de6688038e365e0bae629f13a53": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2021-04-22T17:06:46Z",
+          "oid": "f76622041e272de6688038e365e0bae629f13a53",
+          "prAuthorLogin": "",
+          "prAuthorType": null,
+          "prBaseRefName": null,
+          "prMergedAt": null,
+          "prNumber": null,
+          "prUrl": null
+        },
+        "f773435ee28f5f5b693e04ebfc2d73198d87481d": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-01-09T01:43:49Z",
+          "oid": "f773435ee28f5f5b693e04ebfc2d73198d87481d",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-01-09T01:43:50Z",
+          "prNumber": 55,
+          "prUrl": "https://github.com/WICG/serial/pull/55"
+        },
+        "f99170e0d9f3ba3e4daaf70b4e18bbffa1b53ccf": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2019-10-15T17:02:15Z",
+          "oid": "f99170e0d9f3ba3e4daaf70b4e18bbffa1b53ccf",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2019-10-15T17:02:16Z",
+          "prNumber": 72,
+          "prUrl": "https://github.com/WICG/serial/pull/72"
+        },
+        "fbfa7873628628148a679834650e760ed2d9f96c": {
+          "authorEmail": "marcos@marcosc.com",
+          "authorLogin": "marcoscaceres",
+          "authorName": "Marcos Caceres",
+          "committedDate": "2013-10-30T09:41:43Z",
+          "oid": "fbfa7873628628148a679834650e760ed2d9f96c",
+          "prAuthorLogin": "marcoscaceres",
+          "prAuthorType": "User",
+          "prBaseRefName": "gh-pages",
+          "prMergedAt": "2013-11-01T20:10:58Z",
+          "prNumber": 7,
+          "prUrl": "https://github.com/WICG/serial/pull/7"
+        },
+        "ff6568be3dc44a3860569f98ea39394eb9342781": {
+          "authorEmail": "reillyeon@users.noreply.github.com",
+          "authorLogin": "reillyeon",
+          "authorName": "Reilly Grant",
+          "committedDate": "2026-03-02T18:58:24Z",
+          "oid": "ff6568be3dc44a3860569f98ea39394eb9342781",
+          "prAuthorLogin": "reillyeon",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-03-02T18:58:24Z",
+          "prNumber": 225,
+          "prUrl": "https://github.com/WICG/serial/pull/225"
+        }
+      },
+      "fetchedAt": "2026-09-07T14:54:44Z",
+      "repo": "whatwg/serial",
+      "totalCount": 120
     },
     "whatwg/storage@main": {
       "branch": "main",
@@ -243463,7 +245538,7 @@
           "prUrl": "https://github.com/whatwg/storage/pull/64"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:31Z",
+      "fetchedAt": "2026-09-07T14:54:51Z",
       "repo": "whatwg/storage",
       "totalCount": 107
     },
@@ -257238,7 +259313,7 @@
           "prUrl": "https://github.com/whatwg/streams/pull/710"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:37Z",
+      "fetchedAt": "2026-09-07T14:54:56Z",
       "repo": "whatwg/streams",
       "totalCount": 1059
     },
@@ -257441,7 +259516,7 @@
           "prUrl": "https://github.com/whatwg/testutils/pull/13"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:38Z",
+      "fetchedAt": "2026-09-07T14:54:57Z",
       "repo": "whatwg/testutils",
       "totalCount": 15
     },
@@ -266679,7 +268754,7 @@
           "prUrl": "https://github.com/whatwg/url/pull/780"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:43Z",
+      "fetchedAt": "2026-09-07T14:54:59Z",
       "repo": "whatwg/url",
       "totalCount": 710
     },
@@ -269534,7 +271609,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:45Z",
+      "fetchedAt": "2026-09-07T14:55:02Z",
       "repo": "whatwg/urlpattern",
       "totalCount": 219
     },
@@ -282281,6 +284356,19 @@
           "prNumber": null,
           "prUrl": null
         },
+        "8f182624f632a0ce485e236edbc1df18ca385b1d": {
+          "authorEmail": "annevk@annevk.nl",
+          "authorLogin": "annevk",
+          "authorName": "Anne van Kesteren",
+          "committedDate": "2026-08-31T08:01:15Z",
+          "oid": "8f182624f632a0ce485e236edbc1df18ca385b1d",
+          "prAuthorLogin": "annevk",
+          "prAuthorType": "User",
+          "prBaseRefName": "main",
+          "prMergedAt": "2026-08-31T08:01:16Z",
+          "prNumber": 1632,
+          "prUrl": "https://github.com/whatwg/webidl/pull/1632"
+        },
         "8f48c5aef091b38854c6adc4e7e9b81e978a96fb": {
           "authorEmail": "littledan@chromium.org",
           "authorLogin": "littledan",
@@ -292591,9 +294679,9 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:50Z",
+      "fetchedAt": "2026-09-07T14:55:07Z",
       "repo": "whatwg/webidl",
-      "totalCount": 1773
+      "totalCount": 1774
     },
     "whatwg/websockets@main": {
       "branch": "main",
@@ -292976,7 +295064,7 @@
           "prUrl": "https://github.com/whatwg/websockets/pull/5"
         }
       },
-      "fetchedAt": "2026-08-24T05:00:16Z",
+      "fetchedAt": "2026-09-07T14:54:33Z",
       "repo": "whatwg/websockets",
       "totalCount": 29
     },
@@ -298080,7 +300168,7 @@
           "prUrl": null
         }
       },
-      "fetchedAt": "2026-08-24T05:00:54Z",
+      "fetchedAt": "2026-09-07T14:55:09Z",
       "repo": "whatwg/xhr",
       "totalCount": 392
     }
