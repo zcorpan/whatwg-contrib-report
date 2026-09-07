@@ -36,7 +36,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from typing import Any, DefaultDict, Iterator, Mapping, MutableMapping, Optional
+from typing import Any, Collection, DefaultDict, Iterator, Mapping, MutableMapping, Optional
 
 
 DEFAULT_SG_DB_URL = "https://raw.githubusercontent.com/whatwg/sg/main/db.json"
@@ -244,7 +244,12 @@ class GitHubClient:
         print(f"GitHub primary rate limit reached; sleeping for {delay} seconds", file=sys.stderr)
         time.sleep(delay)
 
-    def graphql(self, query: str, variables: Mapping[str, Any]) -> Any:
+    def graphql(
+        self,
+        query: str,
+        variables: Mapping[str, Any],
+        ignore_error_types: Collection[str] = (),
+    ) -> Any:
         response, _headers, _status = self.request_json(
             "POST",
             self.graphql_url,
@@ -257,7 +262,8 @@ class GitHubClient:
             errors = response["errors"]
             if any(err.get("type") == "RATE_LIMITED" for err in errors):
                 raise ReportError(f"GitHub GraphQL rate limit exceeded: {errors}")
-            raise ReportError(f"GitHub GraphQL errors: {json.dumps(errors, indent=2)}")
+            if not all(err.get("type") in ignore_error_types for err in errors):
+                raise ReportError(f"GitHub GraphQL errors: {json.dumps(errors, indent=2)}")
         return response.get("data")
 
     def rest_get_json(self, path_or_url: str, allow_404: bool = False) -> tuple[Any, Mapping[str, str], int]:
@@ -616,11 +622,13 @@ def fetch_repo_commits(
             "after": after,
             "pageSize": page_size,
         }
-        data = client.graphql(GRAPHQL_HISTORY_QUERY, variables)
+        data = client.graphql(GRAPHQL_HISTORY_QUERY, variables, ignore_error_types={"NOT_FOUND"})
         repository = data.get("repository") if data else None
         if not repository:
-            warnings.append(RunWarning(spec.name, f"Repository {spec.repo_full_name} not found or not visible."))
-            break
+            warnings.append(RunWarning(spec.name, f"Repository {spec.repo_full_name} not found or not visible; skipping this standard."))
+            if not cached_commits:
+                repositories.pop(repo_key, None)
+            return [], {"repositoryFound": False}
         ref = repository.get("ref")
         if not ref:
             warnings.append(RunWarning(spec.name, f"Branch/ref {branch!r} not found in {spec.repo_full_name}."))
@@ -688,6 +696,7 @@ def fetch_repo_commits(
         }
     )
     meta = {
+        "repositoryFound": True,
         "totalCount": total_count if total_count is not None else len(commits),
         "pagesFetched": pages,
         "newCommitsFetched": new_count,
@@ -1563,6 +1572,8 @@ def main(argv: Optional[list[str]] = None) -> int:
             page_size=args.page_size,
             warnings=warnings,
         )
+        if not repo_meta.get("repositoryFound"):
+            continue
         commits_by_repo[spec.repo_full_name] = commits
         repo_meta_by_repo[spec.repo_full_name] = repo_meta
 
