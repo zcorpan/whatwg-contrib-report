@@ -6442,7 +6442,7 @@
   },
   "branch": "main",
   "disclaimer": "Entity attribution uses the latest public GitHub organization memberships and participant-data contacts at generation time. Historical employer changes are not reconstructed; past contributions are credited to the current visible entity affiliation.",
-  "generatedAt": "2026-09-07T14:58:22Z",
+  "generatedAt": "2026-09-07T15:05:47Z",
   "inputs": {
     "affiliationSource": "user-orgs",
     "creditDirectCommits": true,
@@ -6461,9 +6461,9 @@
       "GITHUB_REF_NAME": "main",
       "GITHUB_REPOSITORY": "zcorpan/whatwg-contrib-report",
       "GITHUB_RUN_ATTEMPT": "1",
-      "GITHUB_RUN_ID": "34135439068",
-      "GITHUB_RUN_NUMBER": "19",
-      "GITHUB_SHA": "5fa122b6622b6613332fbd8f2119c8db44614e44",
+      "GITHUB_RUN_ID": "34136258230",
+      "GITHUB_RUN_NUMBER": "20",
+      "GITHUB_SHA": "c29e3085e65d1b69fb8e8cc60442b09a720cea6e",
       "GITHUB_WORKFLOW": "WHATWG contribution report"
     },
     "script": {
@@ -6472,21 +6472,21 @@
     "sources": {
       "entities": {
         "byteLength": 68782,
-        "fetchedAt": "2026-09-07T14:54:04Z",
+        "fetchedAt": "2026-09-07T15:03:20Z",
         "pinnedUrl": "https://raw.githubusercontent.com/whatwg/participant-data/9c1a1e8ea0efec37b0090ba98872664be36df7f7/entities.json",
         "sha256": "9f5e0b8da8074b5999e8f36c858150e6c30d53c3d051e6c1492514cb5ea0f558",
         "url": "https://raw.githubusercontent.com/whatwg/participant-data/main/entities.json"
       },
       "individuals": {
         "byteLength": 164900,
-        "fetchedAt": "2026-09-07T14:54:04Z",
+        "fetchedAt": "2026-09-07T15:03:20Z",
         "pinnedUrl": "https://raw.githubusercontent.com/whatwg/participant-data/9c1a1e8ea0efec37b0090ba98872664be36df7f7/individuals.json",
         "sha256": "653eaae45847c1aecf4be8f87056496038b462298cfe23acf9d65c21ed93018c",
         "url": "https://raw.githubusercontent.com/whatwg/participant-data/main/individuals.json"
       },
       "sg-db": {
         "byteLength": 24319,
-        "fetchedAt": "2026-09-07T14:54:03Z",
+        "fetchedAt": "2026-09-07T15:03:19Z",
         "pinnedUrl": "https://raw.githubusercontent.com/whatwg/sg/7eb413be67f6c845965c647f8544661741125212/db.json",
         "sha256": "c008d39cc3adf8e23f2f4ea54f29aa22e451bae54010f83ad105ad58deda0502",
         "url": "https://raw.githubusercontent.com/whatwg/sg/main/db.json"
@@ -8808,8 +8808,8 @@
       "name": "DOM",
       "noLoginCommits": 13,
       "repoFetch": {
-        "newCommitsFetched": 1,
-        "pagesFetched": 2,
+        "newCommitsFetched": 0,
+        "pagesFetched": 1,
         "repositoryFound": true,
         "stoppedOnCache": true,
         "totalCount": 1981
@@ -11838,8 +11838,8 @@
       "name": "Fetch",
       "noLoginCommits": 4,
       "repoFetch": {
-        "newCommitsFetched": 4,
-        "pagesFetched": 2,
+        "newCommitsFetched": 0,
+        "pagesFetched": 1,
         "repositoryFound": true,
         "stoppedOnCache": true,
         "totalCount": 1095
@@ -19328,8 +19328,8 @@
       "name": "HTML",
       "noLoginCommits": 12,
       "repoFetch": {
-        "newCommitsFetched": 34,
-        "pagesFetched": 2,
+        "newCommitsFetched": 0,
+        "pagesFetched": 1,
         "repositoryFound": true,
         "stoppedOnCache": true,
         "totalCount": 12716
@@ -21392,10 +21392,10 @@
       "name": "WebSerial",
       "noLoginCommits": 1,
       "repoFetch": {
-        "newCommitsFetched": 120,
-        "pagesFetched": 2,
+        "newCommitsFetched": 0,
+        "pagesFetched": 1,
         "repositoryFound": true,
-        "stoppedOnCache": false,
+        "stoppedOnCache": true,
         "totalCount": 120
       },
       "repository": "whatwg/serial",
@@ -26996,8 +26996,8 @@
       "name": "Web IDL",
       "noLoginCommits": 22,
       "repoFetch": {
-        "newCommitsFetched": 1,
-        "pagesFetched": 2,
+        "newCommitsFetched": 0,
+        "pagesFetched": 1,
         "repositoryFound": true,
         "stoppedOnCache": true,
         "totalCount": 1774
